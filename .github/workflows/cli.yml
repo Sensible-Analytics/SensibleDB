@@ -50,31 +50,31 @@ jobs:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            binary_name: helix-x86_64-unknown-linux-gnu
+            binary_name: nexus-x86_64-unknown-linux-gnu
           - os: ubuntu-24.04-arm
             target: aarch64-unknown-linux-gnu
-            binary_name: helix-aarch64-unknown-linux-gnu
+            binary_name: nexus-aarch64-unknown-linux-gnu
           - os: macos-15-intel
             target: x86_64-apple-darwin
-            binary_name: helix-x86_64-apple-darwin
+            binary_name: nexus-x86_64-apple-darwin
           - os: macos-latest
             target: aarch64-apple-darwin
-            binary_name: helix-aarch64-apple-darwin
+            binary_name: nexus-aarch64-apple-darwin
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            binary_name: helix-x86_64-pc-windows-msvc.exe
+            binary_name: nexus-x86_64-pc-windows-msvc.exe
 
     steps:
       - uses: actions/checkout@v3
       - name: Build
         run: |
-          cd helix-cli
+          cd nexus-cli
           cargo build --release --target ${{ matrix.target }}
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: target/${{ matrix.target }}/release/${{ matrix.os == 'windows-latest' && 'helix.exe' || 'helix' }}
+          asset_path: target/${{ matrix.target }}/release/${{ matrix.os == 'windows-latest' && 'nexus.exe' || 'nexus' }}
           asset_name: ${{ matrix.binary_name }}
           asset_content_type: application/octet-stream
         env:

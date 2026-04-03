@@ -58,11 +58,11 @@ jobs:
             .
 
           # Upload to S3
-          aws s3 cp /tmp/template.tar.gz s3://helix-repo/template.tar.gz
+          aws s3 cp /tmp/template.tar.gz s3://nexus-repo/template.tar.gz
 
       - name: Upload completion notification
         if: success()
         run: |
-          echo "Successfully uploaded template.tar.gz to S3 bucket: helix-repo"
+          echo "Successfully uploaded template.tar.gz to S3 bucket: nexus-repo"
           echo "Upload triggered by: ${{ github.event_name }}"
           echo "Reference: ${{ github.ref }}"

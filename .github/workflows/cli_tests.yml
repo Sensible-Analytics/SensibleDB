@@ -4,10 +4,10 @@
 #   pull_request:
 #     branches: [main, dev]
 #     paths:
-#       - 'helix-cli/**'
-#       - 'helix-macros/**'
-#       - 'helix-container/**'
-#       - 'helix-db/**'
+#       - 'nexus-cli/**'
+#       - 'nexus-macros/**'
+#       - 'nexus-container/**'
+#       - 'nexus-db/**'
 #       - 'Cargo.toml'
 #       - 'Cargo.lock'
 
@@ -42,17 +42,17 @@
 #           restore-keys: |
 #             ${{ runner.os }}-cargo-
 
-#       - name: Run helix-cli unit tests
-#         run: cargo test --release --package helix-cli
+#       - name: Run nexus-cli unit tests
+#         run: cargo test --release --package nexus-cli
 #         env:
 #           # Use a unique temp directory for test isolation
-#           HELIX_CACHE_DIR: ${{ runner.temp }}/helix-test-cache-${{ github.run_id }}
+#           NEXUS_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-${{ github.run_id }}
 
-#       - name: Run helix-macros tests
-#         run: cargo test --release --package helix-macros
+#       - name: Run nexus-macros tests
+#         run: cargo test --release --package nexus-macros
 
 #       # Integration tests that require repo cloning run serially
-#       - name: Run helix-cli integration tests (ignored tests)
-#         run: cargo test --release --package helix-cli -- --ignored --test-threads=1
+#       - name: Run nexus-cli integration tests (ignored tests)
+#         run: cargo test --release --package nexus-cli -- --ignored --test-threads=1
 #         env:
-#           HELIX_CACHE_DIR: ${{ runner.temp }}/helix-test-cache-ignored-${{ github.run_id }}
+#           NEXUS_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-ignored-${{ github.run_id }}

@@ -1,42 +1,42 @@
 <div align="center">
 
 <picture>
-  <img src="/assets/full_logo.png" alt="HelixDB Logo">
+  <img src="/assets/full_logo.png" alt="NexusDB Logo">
 </picture>
 
-<b>HelixDB</b>: an open-source graph-vector database built from scratch in Rust.
+<b>NexusDB</b>: an open-source graph-vector database built from scratch in Rust.
 
 <h3>
-  <a href="https://helix-db.com">Website</a> |
-  <a href="https://docs.helix-db.com">Docs</a> |
+  <a href="https://nexus-db.com">Website</a> |
+  <a href="https://docs.nexus-db.com">Docs</a> |
   <a href="https://discord.gg/2stgMPr5BD">Discord</a> |
-  <a href="https://x.com/helixdb">X/Twitter</a>
+  <a href="https://x.com/nexusdb">X/Twitter</a>
 </h3>
 
-[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://docs.helix-db.com)
-[![Change Log](https://img.shields.io/badge/changelog-latest-blue)](https://docs.helix-db.com/change-log/helixdb)
-[![GitHub Repo stars](https://img.shields.io/github/stars/HelixDB/helix-db)](https://github.com/HelixDB/helix-db/stargazers)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://docs.nexus-db.com)
+[![Change Log](https://img.shields.io/badge/changelog-latest-blue)](https://docs.nexus-db.com/change-log/nexusdb)
+[![GitHub Repo stars](https://img.shields.io/github/stars/NexusDB/nexus-db)](https://github.com/NexusDB/nexus-db/stargazers)
 [![Discord](https://img.shields.io/discord/1354148209005559819?logo=discord)](https://discord.gg/2stgMPr5BD)
-[![LOC](https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/HelixDB/helix-db/badge?filter=.rs$,.sh$&style=flat&logoColor=white&label=Lines%20of%20Code)](https://github.com/HelixDB/helix-db)
-[![Manta Graph](https://getmanta.ai/api/badges?text=Manta%20Graph&link=helixdb)](https://getmanta.ai/helixdb)
+[![LOC](https://img.shields.io/endpoint?url=https://ghloc.vercel.app/api/NexusDB/nexus-db/badge?filter=.rs$,.sh$&style=flat&logoColor=white&label=Lines%20of%20Code)](https://github.com/NexusDB/nexus-db)
+[![Manta Graph](https://getmanta.ai/api/badges?text=Manta%20Graph&link=nexusdb)](https://getmanta.ai/nexusdb)
 
-<a href="https://www.ycombinator.com/launches/Naz-helixdb-the-database-for-rag-ai" target="_blank"><img src="https://www.ycombinator.com/launches/Naz-helixdb-the-database-for-rag-ai/upvote_embed.svg" alt="Launch YC: HelixDB - The Database for Intelligence" style="margin-left: 12px;"/></a>
+<a href="https://www.ycombinator.com/launches/Naz-nexusdb-the-database-for-rag-ai" target="_blank"><img src="https://www.ycombinator.com/launches/Naz-nexusdb-the-database-for-rag-ai/upvote_embed.svg" alt="Launch YC: NexusDB - The Database for Intelligence" style="margin-left: 12px;"/></a>
 
 </div>
 
 <hr>
 
 
-HelixDB is a database that makes it easy to build all the components needed for an AI application in a single platform.
+NexusDB is a database that makes it easy to build all the components needed for an AI application in a single platform.
 
-You no longer need a separate application DB, vector DB, graph DB, or application layers to manage the multiple storage locations to build the backend of any application that uses AI, agents or RAG. Just use Helix.
+You no longer need a separate application DB, vector DB, graph DB, or application layers to manage the multiple storage locations to build the backend of any application that uses AI, agents or RAG. Just use Nexus.
 
-HelixDB primarily operates with a graph + vector data model, but it can also support KV, documents, and relational data.
+NexusDB primarily operates with a graph + vector data model, but it can also support KV, documents, and relational data.
 
-### Get started with HelixDB
+### Get started with NexusDB
 
 <div align="center">                                                                                                                                                                                                                                                                                                                                                                                   
-    <img src="/assets/readmeinit.gif" alt="Helix CLI Demo" width="100%">                                                                                                                                                                                                                                                                                                                                              
+    <img src="/assets/readmeinit.gif" alt="Nexus CLI Demo" width="100%">                                                                                                                                                                                                                                                                                                                                              
 </div>  
 
 --- 
@@ -45,36 +45,70 @@ HelixDB primarily operates with a graph + vector data model, but it can also sup
 
 |                         |                                                                                                                                        |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **Built-in MCP tools**  | Helix has built-in MCP support to allow your agents to discover data and walk the graph rather than generating human readable queries. |
-| **Built-in Embeddings** | No need to embed your data before sending it to Helix, just use the `Embed` function to vectorize text.                                |
-| **Tooling for RAG**     | HelixDB has a built-in vector search, keyword search, and graph traversals that can be used to power any type of RAG applications.     |
-| **Secure by Default**   | HelixDB is private by default. You can only access your data through your compiled HelixQL queries.                                    |
-| **Ultra-Low Latency**   | Helix is built in Rust and uses LMDB as its storage engine to provide extremely low latencies.                                         |
-| **Type-Safe Queries**   | HelixQL is 100% type-safe, which lets you develop and deploy with the confidence that your queries will execute in production          |
+| **Built-in MCP tools**  | Nexus has built-in MCP support to allow your agents to discover data and walk the graph rather than generating human readable queries. |
+| **Built-in Embeddings** | No need to embed your data before sending it to Nexus, just use the `Embed` function to vectorize text.                                |
+| **Tooling for RAG**     | NexusDB has a built-in vector search, keyword search, and graph traversals that can be used to power any type of RAG applications.     |
+| **Secure by Default**   | NexusDB is private by default. You can only access your data through your compiled NexusQL queries.                                    |
+| **Ultra-Low Latency**   | Nexus is built in Rust and uses LMDB as its storage engine to provide extremely low latencies.                                         |
+| **Type-Safe Queries**   | NexusQL is 100% type-safe, which lets you develop and deploy with the confidence that your queries will execute in production          |
+| **Embedded Mode**       | Use NexusDB as a lightweight embedded database in your Rust applications with zero external dependencies.                               |
+
+## Embedded Mode
+
+NexusDB can be used as an embedded database in Rust applications. Enable with the `embedded` feature:
+
+```toml
+[dependencies]
+nexus-db = { version = "1.3", features = ["embedded"] }
+```
+
+### Quick Start (Embedded)
+
+```rust
+use nexus_db::embedded::{Database, Node};
+
+let db = Database::open("./my_db")?;
+let mut tx = db.write_transaction()?;
+
+tx.put_node(Node {
+    id: 1,
+    label: "User".into(),
+})?;
+
+tx.commit()?;
+```
+
+### Embedded Features
+
+- **Storage**: In-memory storage with optional persistence
+- **Graph**: Node/edge CRUD with transactions
+- **Vector**: Cosine similarity search
+- **Traversal**: BFS/DFS graph traversal
+- **Indices**: Secondary indices for fast lookups
 
 ## Getting Started
 
-#### Helix CLI
+#### Nexus CLI
 
-Start by installing the Helix CLI tool to deploy Helix locally.
+Start by installing the Nexus CLI tool to deploy Nexus locally.
 
 1. Install CLI
 
    ```bash
-   curl -sSL "https://install.helix-db.com" | bash
+   curl -sSL "https://install.nexus-db.com" | bash
    ```
 
 2. Initialize a project
 
    ```bash
    mkdir <path-to-project> && cd <path-to-project>
-   helix init
+   nexus init
    ```
 
 3. Write queries
 
    Open your newly created `.hx` files and start writing your schema and queries.
-   Head over to [our docs](https://docs.helix-db.com/documentation/hql/hql) for more information about writing queries.
+   Head over to [our docs](https://docs.nexus-db.com/documentation/hql/hql) for more information about writing queries.
 
    ```js
    N::User {
@@ -90,23 +124,23 @@ Start by installing the Helix CLI tool to deploy Helix locally.
 4. (Optional) Check your queries compile
 
    ```bash
-   helix check
+   nexus check
    ```
 
 5. Deploy your queries to their API endpoints
 
    ```bash
-   helix push dev
+   nexus push dev
    ```
 
-6. Start calling them using our [TypeScript SDK](https://github.com/HelixDB/helix-ts) or [Python SDK](https://github.com/HelixDB/helix-py). For example:
+6. Start calling them using our [TypeScript SDK](https://github.com/NexusDB/nexus-ts) or [Python SDK](https://github.com/NexusDB/nexus-py). For example:
 
    ```typescript
-   import HelixDB from "helix-ts";
+   import NexusDB from "nexus-ts";
 
-   // Create a new HelixDB client
+   // Create a new NexusDB client
    // The default port is 6969
-   const client = new HelixDB();
+   const client = new NexusDB();
 
    // Query the database
    await client.query("addUser", {
@@ -124,12 +158,12 @@ Start by installing the Helix CLI tool to deploy Helix locally.
 
 ## License
 
-HelixDB is licensed under the The AGPL (Affero General Public License).
+NexusDB is licensed under the The AGPL (Affero General Public License).
 
 ## Commercial Support
 
-HelixDB is available as a managed service for selected users, if you're interested in using Helix's managed service or want enterprise support, [contact](mailto:founders@helix-db.com) us for more information and deployment options.
+NexusDB is available as a managed service for selected users, if you're interested in using Nexus's managed service or want enterprise support, [contact](mailto:founders@nexus-db.com) us for more information and deployment options.
 
 ---
 
-Just Use Helix
+Just Use Nexus

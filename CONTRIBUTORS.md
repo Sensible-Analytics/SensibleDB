@@ -1,25 +1,25 @@
-# Contributing to HelixDB
+# Contributing to NexusDB
 
 ## Overview
-HelixDB is a high-performance graph-vector database built in Rust, optimized for RAG and AI applications. It combines graph traversals, vector similarity search, and full-text search in a single database.
+NexusDB is a high-performance graph-vector database built in Rust, optimized for RAG and AI applications. It combines graph traversals, vector similarity search, and full-text search in a single database.
 
-We welcome contributions from the community! This guide will help you get started with contributing to HelixDB.
+We welcome contributions from the community! This guide will help you get started with contributing to NexusDB.
 
 ## How to Contribute
 
 ### Reporting Issues
-- Check existing [GitHub Issues](https://github.com/HelixDB/helix-db/issues) to avoid duplicates
+- Check existing [GitHub Issues](https://github.com/NexusDB/nexus-db/issues) to avoid duplicates
 - Use a clear, descriptive title
 - Include steps to reproduce for bugs
-- Provide system information (OS, Rust version, HelixDB version)
+- Provide system information (OS, Rust version, NexusDB version)
 - Add relevant logs or error messages
 
 ### Contribution Workflow
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/helix-db.git
-   cd helix-db
+   git clone https://github.com/YOUR_USERNAME/nexus-db.git
+   cd nexus-db
    ```
 3. **Create a feature branch** from `main`:
    ```bash
@@ -60,8 +60,8 @@ We welcome contributions from the community! This guide will help you get starte
 ### Building the Project
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/HelixDB/helix-db.git
-   cd helix-db
+   git clone https://github.com/NexusDB/nexus-db.git
+   cd nexus-db
    ```
 
 2. **Build all components**:
@@ -75,35 +75,35 @@ We welcome contributions from the community! This guide will help you get starte
    ```
 
 ### Building Specific Components
-- **CLI only**: `cargo build -p helix-cli`
-- **Core database**: `cargo build -p helix-db`
-- **Container**: `cargo build -p helix-container`
+- **CLI only**: `cargo build -p nexus-cli`
+- **Core database**: `cargo build -p nexus-db`
+- **Container**: `cargo build -p nexus-container`
 
-### Running HelixDB Locally
+### Running NexusDB Locally
 1. Install the CLI (development version):
    ```bash
-   cargo install --path helix-cli
+   cargo install --path nexus-cli
    ```
 
 2. Initialize a test project:
    ```bash
    mkdir test-project && cd test-project
-   helix init
+   nexus init
    ```
 
 3. Deploy locally:
    ```bash
-   helix push dev
+   nexus push dev
    ```
 
 ## Project Structure
 
 ### Core Components
 
-#### `/helix-db/` - Main Database Library
-The heart of HelixDB containing all database functionality.
+#### `/nexus-db/` - Main Database Library
+The heart of NexusDB containing all database functionality.
 
-- **`helix_engine/`** - Database engine implementation
+- **`nexus_engine/`** - Database engine implementation
   - `bm25/` - Full-text search using BM25 algorithm
   - `storage_core/` - LMDB-based storage backend via heed3
   - `traversal_core/` - Graph traversal operations and query execution
@@ -112,7 +112,7 @@ The heart of HelixDB containing all database functionality.
   - `types.rs` - Core type definitions
   - `macros.rs` - Helper macros
 
-- **`helix_gateway/`** - Network layer
+- **`nexus_gateway/`** - Network layer
   - `builtin/` - Built-in query handlers (node_by_id, all_nodes_and_edges, node_connections, nodes_by_label)
   - `embedding_providers/` - Integration with embedding services
   - `router/` - Request routing to handlers
@@ -121,18 +121,18 @@ The heart of HelixDB containing all database functionality.
   - `gateway.rs` - Main gateway implementation
   - `introspect_schema.rs` - Schema introspection utilities
 
-- **`helixc/`** - Query compiler
+- **`nexusc/`** - Query compiler
   - `parser/` - Parser for `.hx` files (using Pest grammar)
   - `analyzer/` - Type checking, validation, and diagnostics
   - `generator/` - Rust code generation from parsed queries
 
-- **`grammar.pest`** - 295-line Pest grammar defining HQL syntax
+- **`grammar.pest`** - 295-line Pest grammar defining NQL syntax
 
 - **`protocol/`** - Wire protocol and data types
 
 - **`utils/`** - Shared utilities across the codebase
 
-#### `/helix-container/` - Runtime Container
+#### `/nexus-container/` - Runtime Container
 The server process that hosts compiled queries and handles requests.
 
 **Files:**
@@ -143,20 +143,20 @@ The server process that hosts compiled queries and handles requests.
 
 **Architecture:**
 - Loads compiled queries via inventory crate route discovery
-- Creates HelixGraphEngine with LMDB storage backend
-- Starts HelixGateway on configured port (default: 6969)
+- Creates NexusGraphEngine with LMDB storage backend
+- Starts NexusGateway on configured port (default: 6969)
 - Routes HTTP requests to registered handlers
 
 **Environment Variables:**
-- `HELIX_DATA_DIR` - Database storage location
-- `HELIX_PORT` - Server port
+- `NEXUS_DATA_DIR` - Database storage location
+- `NEXUS_PORT` - Server port
 
-#### `/helix-cli/` - Command-Line Interface
-User-facing CLI for managing HelixDB instances and deployments.
+#### `/nexus-cli/` - Command-Line Interface
+User-facing CLI for managing NexusDB instances and deployments.
 
 **Directory Structure:**
 ```
-helix-cli/
+nexus-cli/
 ├── src/
 │   ├── commands/           # CLI command implementations
 │   │   ├── integrations/   # Cloud deployment integrations
@@ -164,7 +164,7 @@ helix-cli/
 │   │   │   ├── ecr.rs      # AWS ECR
 │   │   │   ├── fly.rs      # Fly.io
 │   │   │   ├── ghcr.rs     # GitHub Container Registry
-│   │   │   └── helix.rs    # Helix Cloud
+│   │   │   └── nexus.rs    # Nexus Cloud
 │   │   ├── add.rs         # Add dependencies
 │   │   ├── auth.rs        # Authentication (login/logout/create-key)
 │   │   ├── build.rs       # Build queries
@@ -194,25 +194,25 @@ helix-cli/
 ```
 
 **Available Commands:**
-- `helix add` - Add dependencies to project
-- `helix auth` - Authentication management (login/logout/create-key)
-- `helix build` - Build queries without deploying
-- `helix check` - Validate schema and query syntax
-- `helix compile` - Compile queries to Rust code
-- `helix delete` - Remove instance and data
-- `helix init` - Create new project with template files
-- `helix metrics` - Configure metrics collection (full/basic/off/status)
-- `helix migrate` - Run database migrations
-- `helix prune` - Clean up unused resources
-- `helix pull` - Pull deployment from cloud
-- `helix push` - Push deployment to cloud (dev/staging/prod)
-- `helix start` - Start stopped instances
-- `helix status` - Show instance status
-- `helix stop` - Stop running instances
-- `helix update` - Update CLI to latest version
+- `nexus add` - Add dependencies to project
+- `nexus auth` - Authentication management (login/logout/create-key)
+- `nexus build` - Build queries without deploying
+- `nexus check` - Validate schema and query syntax
+- `nexus compile` - Compile queries to Rust code
+- `nexus delete` - Remove instance and data
+- `nexus init` - Create new project with template files
+- `nexus metrics` - Configure metrics collection (full/basic/off/status)
+- `nexus migrate` - Run database migrations
+- `nexus prune` - Clean up unused resources
+- `nexus pull` - Pull deployment from cloud
+- `nexus push` - Push deployment to cloud (dev/staging/prod)
+- `nexus start` - Start stopped instances
+- `nexus status` - Show instance status
+- `nexus stop` - Stop running instances
+- `nexus update` - Update CLI to latest version
 
 **Deployment Integrations:**
-- Helix Cloud (managed hosting)
+- Nexus Cloud (managed hosting)
 - AWS ECR (Elastic Container Registry)
 - Fly.io
 - Docker Hub
@@ -221,7 +221,7 @@ helix-cli/
 
 **Build & Deploy Flow:**
 1. Read `.hx` files (schema.hx, queries.hx)
-2. Parse and analyze using helixc
+2. Parse and analyze using nexusc
 3. Generate Rust code with handler functions
 4. Write to container/src/queries.rs
 5. Build release binary with optimizations
@@ -229,11 +229,11 @@ helix-cli/
 
 ### Supporting Components
 
-#### `/helix-macros/` - Procedural Macros
-Procedural macros for HelixDB including route registration and code generation utilities.
+#### `/nexus-macros/` - Procedural Macros
+Procedural macros for NexusDB including route registration and code generation utilities.
 
-#### `/hql-tests/` - HQL Test Suite
-Test files for the Helix Query Language (HQL).
+#### `/nql-tests/` - NQL Test Suite
+Test files for the Nexus Query Language (NQL).
 
 #### `/metrics/` - Performance Metrics
 Performance benchmarking and metrics collection.
@@ -241,7 +241,7 @@ Performance benchmarking and metrics collection.
 ## Key Concepts
 
 ### Query Language
-HelixDB uses a custom query language defined in `.hx` files:
+NexusDB uses a custom query language defined in `.hx` files:
 ```
 QUERY addUser(name: String, age: I64) =>
    user <- AddN<User({name: name, age: age})
@@ -262,8 +262,8 @@ QUERY addUser(name: String, age: I64) =>
 ## Architecture Flow
 
 1. **Definition**: Write queries in `.hx` files
-2. **Compilation**: `helix check` parses and validates
-3. **Deployment**: `helix deploy` loads into container
+2. **Compilation**: `nexus check` parses and validates
+3. **Deployment**: `nexus deploy` loads into container
 4. **Execution**: Gateway routes requests to compiled handlers
 5. **Storage**: LMDB handles persistence with ACID guarantees
 
@@ -284,32 +284,32 @@ Run Clippy to check code quality:
 
 The `clippy_check.sh` script at the repository root runs clippy with project-specific rules:
 - Treats warnings as errors
-- Excludes `hql-tests` crate
+- Excludes `nql-tests` crate
 - Can run in dashboard mode with additional features
 
 ### Testing
 
-HelixDB has a comprehensive test suite organized across multiple levels:
+NexusDB has a comprehensive test suite organized across multiple levels:
 
 #### Test Structure
 
 **Unit Tests** (within `src/` directories)
-- `/helix-db/src/helix_engine/tests/` - Engine unit tests
-- `/helix-db/src/helix_gateway/tests/` - Gateway unit tests
+- `/nexus-db/src/nexus_engine/tests/` - Engine unit tests
+- `/nexus-db/src/nexus_gateway/tests/` - Gateway unit tests
 - Inline `#[cfg(test)]` modules throughout the codebase
 
 **Integration Tests**
-- `/helix-db/tests/` - Database integration tests
+- `/nexus-db/tests/` - Database integration tests
 
 **CLI Tests**
-- `/helix-cli/src/tests/` - Command-line interface tests
+- `/nexus-cli/src/tests/` - Command-line interface tests
   - `check_tests.rs` - Validation testing
   - `compile_tests.rs` - Compilation testing
   - `init_tests.rs` - Project initialization
   - `project_tests.rs` - Project management
 
-**HQL End-to-End Tests**
-- `/hql-tests/tests/` - 54+ test directories covering:
+**NQL End-to-End Tests**
+- `/nql-tests/tests/` - 54+ test directories covering:
   - Graph operations (add_n, add_e, traversals)
   - Vector search (search_v_with_embed)
   - Text search (search_bm25)
@@ -321,8 +321,8 @@ HelixDB has a comprehensive test suite organized across multiple levels:
   - Benchmarks
 
 **Benchmark Tests**
-- `/helix-db/benches/bm25_benches.rs` - Full-text search performance
-- `/helix-db/benches/hnsw_benches.rs` - Vector search performance
+- `/nexus-db/benches/bm25_benches.rs` - Full-text search performance
+- `/nexus-db/benches/hnsw_benches.rs` - Vector search performance
 
 #### Running Tests
 
@@ -331,11 +331,11 @@ HelixDB has a comprehensive test suite organized across multiple levels:
 cargo test --workspace
 
 # Run specific crate tests
-cargo test -p helix-db
-cargo test -p helix-cli
+cargo test -p nexus-db
+cargo test -p nexus-cli
 
-# Run HQL tests
-cd hql-tests
+# Run NQL tests
+cd nql-tests
 ./test.sh
 
 # Run benchmarks
@@ -358,9 +358,9 @@ cargo test --benches
 
 ### Getting Help
 - **Discord**: Join our [Discord community](https://discord.gg/2stgMPr5BD) for real-time discussions, questions, and support
-- **GitHub Issues**: Report bugs or request features at [github.com/HelixDB/helix-db/issues](https://github.com/HelixDB/helix-db/issues)
-- **Documentation**: Check [docs.helix-db.com](https://docs.helix-db.com) for comprehensive guides
-- **Twitter/X**: Follow [@helixdb](https://x.com/helixdb) for updates and announcements
+- **GitHub Issues**: Report bugs or request features at [github.com/NexusDB/nexus-db/issues](https://github.com/NexusDB/nexus-db/issues)
+- **Documentation**: Check [docs.nexus-db.com](https://docs.nexus-db.com) for comprehensive guides
+- **Twitter/X**: Follow [@nexusdb](https://x.com/nexusdb) for updates and announcements
 
 ### Before You Ask
 - Search existing GitHub issues and Discord for similar questions
@@ -379,7 +379,7 @@ cargo test --benches
 ### What Reviewers Look For
 - **Correctness**: Does the code work as intended?
 - **Tests**: Are there adequate tests? Do they pass?
-- **Code style**: Does it follow Rust and HelixDB conventions?
+- **Code style**: Does it follow Rust and NexusDB conventions?
 - **Performance**: Are there obvious performance issues?
 - **Documentation**: Are complex parts explained?
 - **Scope**: Is the PR focused on a single feature/fix?
@@ -408,13 +408,13 @@ cargo test --benches
 
 ## Getting Started
 
-1. Install CLI: `curl -sSL "https://install.helix-db.com" | bash`
-2. Install Helix: `helix install`
-3. Initialize project: `helix init --path <path>`
+1. Install CLI: `curl -sSL "https://install.nexus-db.com" | bash`
+2. Install Nexus: `nexus install`
+3. Initialize project: `nexus init --path <path>`
 4. Write queries in `.hx` files
-5. Deploy: `helix deploy`
+5. Deploy: `nexus deploy`
 
 ## License
 AGPL (Affero General Public License)
 
-For commercial support: founders@helix-db.com
+For commercial support: founders@nexus-db.com

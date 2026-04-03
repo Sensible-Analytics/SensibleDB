@@ -4,8 +4,8 @@ on:
   pull_request:
     branches: [main, dev]
     paths:
-      - 'helix-macros/**'
-      - 'helix-db/**'
+      - 'nexus-macros/**'
+      - 'nexus-db/**'
 
 jobs:
   hql-tests:

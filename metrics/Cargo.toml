@@ -1,11 +1,11 @@
 [package]
-name = "helix-metrics"
+name = "nexus-metrics"
 version = "0.1.1"
 edition = "2024"
-authors = ["HelixDB Team"]
-repository = "https://github.com/HelixDB/helix-db"
+authors = ["NexusDB Team"]
+repository = "https://github.com/NexusDB/nexus-db"
 license = "AGPL-3.0"
-description = "Metrics for HelixDB"
+description = "Metrics for NexusDB"
 
 [dependencies]
 reqwest = "0.12.11"

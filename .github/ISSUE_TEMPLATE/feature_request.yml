@@ -1,5 +1,5 @@
 name: Feature Request
-description: Suggest an idea for HelixDB
+description: Suggest an idea for NexusDB
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
@@ -19,7 +19,7 @@ body:
     id: area
     attributes:
       label: Feature Area
-      description: Which area of HelixDB does this feature relate to?
+      description: Which area of NexusDB does this feature relate to?
       options:
         - Vector Operations
         - Graph Operations
