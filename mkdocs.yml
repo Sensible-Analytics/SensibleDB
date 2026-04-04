@@ -1,0 +1,67 @@
+site_name: NexusDB Documentation
+site_description: Official documentation for NexusDB - the open-source graph-vector database
+site_url: https://sensible-analytics.github.io/NexusDB/
+repo_url: https://github.com/Sensible-Analytics/NexusDB
+repo_name: Sensible-Analytics/NexusDB
+
+theme:
+  name: material
+  logo: assets/full_logo.png
+  favicon: assets/full_logo.png
+  palette:
+    - scheme: default
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - admonition
+  - pymdownx.details
+
+nav:
+  - Getting Started:
+    - Overview: getting-started/intro.md
+    - Installation: getting-started/installation.md
+  - NexusQL:
+    - Overview: nexusql/overview.md
+    - Schema Definition: nexusql/schema-definition.md
+    - CRUD Operations: nexusql/crud-operations.md
+    - Graph Traversals: nexusql/traversals.md
+    - Vector Operations: nexusql/vector-operations.md
+  - CLI:
+    - Getting Started: cli/getting-started.md
+  - SDKs:
+    - Overview: sdks/overview.md
+  - Features:
+    - Overview: features/overview.md
+  - Overview:
+    - About: overview/about.md
+    - Distinctive Features: overview/distinctive-features.md
+    - When to Use: overview/when-to-use.md
+  - Programming Interfaces:
+    - 5 Minutes: programming-interfaces/5-minutes.md
+
