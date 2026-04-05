@@ -4,8 +4,8 @@ on:
   pull_request:
     branches: [main, dev]
     paths:
-      - 'nexus-macros/**'
-      - 'nexus-db/**'
+      - 'sensibledb-macros/**'
+      - 'sensibledb-db/**'
 
 jobs:
   hql-tests:

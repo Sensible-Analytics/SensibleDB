@@ -10,14 +10,14 @@ N::TestBM25Node {
 }
 
 // ============================================================================
-// BM25 TEST QUERIES (from NexusDB test suite - exact copy)
+// BM25 TEST QUERIES (from SensibleDB test suite - exact copy)
 // ============================================================================
 QUERY test_bm25_with_k(k: I32) =>
     res <- SearchBM25<TestBM25Node>("John", k)
     RETURN res
 
 // ============================================================================
-// SIMPLE BM25 TEST QUERIES (from NexusDB test suite)
+// SIMPLE BM25 TEST QUERIES (from SensibleDB test suite)
 // ============================================================================
 
 // Test query 1: Simple BM25 search on TestBM25Node

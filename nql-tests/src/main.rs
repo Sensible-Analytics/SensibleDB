@@ -20,8 +20,8 @@ impl GitHubConfig {
     fn from_env() -> Result<Self> {
         let token =
             env::var("GITHUB_TOKEN").context("GITHUB_TOKEN environment variable not set")?;
-        let owner = env::var("GITHUB_OWNER").unwrap_or_else(|_| "NexusDB".to_string());
-        let repo = env::var("GITHUB_REPO").unwrap_or_else(|_| "nexus-db".to_string());
+        let owner = env::var("GITHUB_OWNER").unwrap_or_else(|_| "SensibleDB".to_string());
+        let repo = env::var("GITHUB_REPO").unwrap_or_else(|_| "sensibledb-db".to_string());
 
         Ok(GitHubConfig { token, owner, repo })
     }
@@ -254,22 +254,22 @@ async fn main() -> Result<()> {
 
     // copy source code from project root to temp_repo
     let project_root = match current_dir.parent() {
-        Some(parent) if parent.join("nexus-cli").exists() => parent.to_path_buf(),
-        Some(_) if current_dir.join("nexus-cli").exists() => current_dir.to_path_buf(),
+        Some(parent) if parent.join("sensibledb-cli").exists() => parent.to_path_buf(),
+        Some(_) if current_dir.join("sensibledb-cli").exists() => current_dir.to_path_buf(),
         Some(parent) => bail!("Error: Failed to get project root: {}", parent.display()),
         None => bail!("Error: Failed to get project root"),
     };
     copy_dir_recursive(&project_root, &temp_repo).await?;
 
-    // build rust cli from ./nexus-db/nexus-cli with sh build.sh dev
-    println!("DEBUG: Building rust cli from ./nexus-db/nexus-cli with sh build.sh dev");
-    let build_script_path = project_root.join("nexus-cli/build.sh");
+    // build rust cli from ./sensibledb-db/sensibledb-cli with sh build.sh dev
+    println!("DEBUG: Building rust cli from ./sensibledb-db/sensibledb-cli with sh build.sh dev");
+    let build_script_path = project_root.join("sensibledb-cli/build.sh");
     println!("DEBUG: Build script path: {}", build_script_path.display());
     println!("DEBUG: Build script exists: {}", build_script_path.exists());
 
-    let nexus_cli_dir = project_root.join("nexus-cli");
-    println!("DEBUG: Nexus CLI dir: {}", nexus_cli_dir.display());
-    println!("DEBUG: Nexus CLI dir exists: {}", nexus_cli_dir.exists());
+    let sensibledb_cli_dir = project_root.join("sensibledb-cli");
+    println!("DEBUG: SensibleDB CLI dir: {}", sensibledb_cli_dir.display());
+    println!("DEBUG: SensibleDB CLI dir exists: {}", sensibledb_cli_dir.exists());
 
     // Check if nexus is already available
     let nexus_check = Command::new("nexus").arg("--version").output();
@@ -293,7 +293,7 @@ async fn main() -> Result<()> {
     let output = Command::new("sh")
         .arg("build.sh")
         .arg("dev")
-        .current_dir(&nexus_cli_dir) // Change to nexus-cli directory first
+        .current_dir(&sensibledb_cli_dir) // Change to sensibledb-cli directory first
         .output()
         .context("Failed to execute build.sh")?;
 
@@ -309,7 +309,7 @@ async fn main() -> Result<()> {
 
     if !output.status.success() {
         bail!(
-            "[FAILED] BUILD FAILED: nexus-cli build.sh failed\nStderr: {}\nStdout: {}",
+            "[FAILED] BUILD FAILED: sensibledb-cli build.sh failed\nStderr: {}\nStdout: {}",
             String::from_utf8_lossy(&output.stderr),
             String::from_utf8_lossy(&output.stdout)
         );
@@ -575,26 +575,26 @@ async fn process_test_directory(
         .await
         .context("Failed to create temp directory")?;
 
-    // Copy the test files (queries.hx, schema.hx, nexus.toml, etc.) to temp directory
+    // Copy the test files (queries.hx, schema.hx, sensibledb.toml, etc.) to temp directory
     copy_dir_recursive(&folder_path, &temp_dir).await?;
 
-    // Copy the entire nexus-db project structure for cargo check
-    // But skip .nexus directory to avoid conflicts
-    let nexus_db_dir = temp_dir.join("nexus-db");
-    fs::create_dir_all(&nexus_db_dir).await?;
+    // Copy the entire sensibledb-db project structure for cargo check
+    // But skip .sensibledb directory to avoid conflicts
+    let sensibledb_db_dir = temp_dir.join("sensibledb-db");
+    fs::create_dir_all(&sensibledb_db_dir).await?;
 
     // Copy all project crates and dependencies (excluding nql-tests to avoid conflicts)
     let crates_to_copy = vec![
-        "nexus-container",
-        "nexus-db",
-        "nexus-macros",
-        "nexus-cli",
+        "sensibledb-container",
+        "sensibledb-db",
+        "sensibledb-macros",
+        "sensibledb-cli",
         "metrics",
     ];
 
     for crate_name in crates_to_copy {
         let src = temp_repo.join(crate_name);
-        let dst = nexus_db_dir.join(crate_name);
+        let dst = sensibledb_db_dir.join(crate_name);
         if src.exists() {
             copy_dir_recursive(&src, &dst).await?;
         }
@@ -602,7 +602,7 @@ async fn process_test_directory(
 
     // Copy root Cargo.toml and Cargo.lock, but remove nql-tests from workspace
     let cargo_toml_src = temp_repo.join("Cargo.toml");
-    let cargo_toml_dst = nexus_db_dir.join("Cargo.toml");
+    let cargo_toml_dst = sensibledb_db_dir.join("Cargo.toml");
     if cargo_toml_src.exists() {
         // Read the Cargo.toml and remove nql-tests from workspace members
         let cargo_content = fs::read_to_string(&cargo_toml_src).await?;
@@ -611,13 +611,13 @@ async fn process_test_directory(
     }
 
     let cargo_lock_src = temp_repo.join("Cargo.lock");
-    let cargo_lock_dst = nexus_db_dir.join("Cargo.lock");
+    let cargo_lock_dst = sensibledb_db_dir.join("Cargo.lock");
     if cargo_lock_src.exists() {
         fs::copy(&cargo_lock_src, &cargo_lock_dst).await?;
     }
 
     // Run nexus compile command
-    let compile_output_path = temp_dir.join("nexus-db/nexus-container/src");
+    let compile_output_path = temp_dir.join("sensibledb-db/sensibledb-container/src");
     fs::create_dir_all(&compile_output_path)
         .await
         .context("Failed to create compile output directory")?;
@@ -645,7 +645,7 @@ async fn process_test_directory(
         let stdout = String::from_utf8_lossy(&output.stdout);
         // For nexus compilation, we'll show the raw output since it's not cargo format
         let error_message = format!(
-            "[FAILED] NEXUS COMPILE FAILED for {test_name}\nStderr: {stderr}\nStdout: {stdout}"
+            "[FAILED] SENSIBLE COMPILE FAILED for {test_name}\nStderr: {stderr}\nStdout: {stdout}"
         );
 
         // Create GitHub issue if configuration is available
@@ -684,11 +684,11 @@ async fn process_test_directory(
     }
 
     // Run cargo check on the nexus container path
-    let nexus_container_path = temp_dir.join("nexus-db/nexus-container");
-    if nexus_container_path.exists() {
+    let sensibledb_container_path = temp_dir.join("sensibledb-db/sensibledb-container");
+    if sensibledb_container_path.exists() {
         let output = Command::new("cargo")
             .arg("check")
-            .current_dir(&nexus_container_path)
+            .current_dir(&sensibledb_container_path)
             .output()
             .context("Failed to execute cargo check")?;
 
@@ -774,4 +774,4 @@ async fn copy_dir_recursive(src: &Path, dst: &Path) -> Result<()> {
     Ok(())
 }
 
-const IGNORE_DIRS: [&str; 3] = ["target", ".git", ".nexus"];
+const IGNORE_DIRS: [&str; 3] = ["target", ".git", ".sensibledb"];

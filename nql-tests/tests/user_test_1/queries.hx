@@ -15,8 +15,8 @@
 //
 //
 // For more information on how to write queries,
-// see the documentation at https://docs.nexus-db.com
-// or checkout our GitHub at https://github.com/NexusDB/nexus-db
+// see the documentation at https://docs.sensibledb-db.com
+// or checkout our GitHub at https://github.com/SensibleDB/sensibledb-db
 
 QUERY createUser(name: String, email: String) =>
   user <- AddN<User>({

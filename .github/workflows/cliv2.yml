@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build
         run: |
-          cd nexus-cli
+          cd sensibledb-cli
           cargo build --release --target ${{ matrix.target }}
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1

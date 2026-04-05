@@ -1,25 +1,25 @@
-# Contributing to NexusDB
+# Contributing to SensibleDB
 
 ## Overview
-NexusDB is a high-performance graph-vector database built in Rust, optimized for RAG and AI applications. It combines graph traversals, vector similarity search, and full-text search in a single database.
+SensibleDB is a high-performance graph-vector database built in Rust, optimized for RAG and AI applications. It combines graph traversals, vector similarity search, and full-text search in a single database.
 
-We welcome contributions from the community! This guide will help you get started with contributing to NexusDB.
+We welcome contributions from the community! This guide will help you get started with contributing to SensibleDB.
 
 ## How to Contribute
 
 ### Reporting Issues
-- Check existing [GitHub Issues](https://github.com/NexusDB/nexus-db/issues) to avoid duplicates
+- Check existing [GitHub Issues](https://github.com/SensibleDB/sensibledb-db/issues) to avoid duplicates
 - Use a clear, descriptive title
 - Include steps to reproduce for bugs
-- Provide system information (OS, Rust version, NexusDB version)
+- Provide system information (OS, Rust version, SensibleDB version)
 - Add relevant logs or error messages
 
 ### Contribution Workflow
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/nexus-db.git
-   cd nexus-db
+   git clone https://github.com/YOUR_USERNAME/sensibledb-db.git
+   cd sensibledb-db
    ```
 3. **Create a feature branch** from `main`:
    ```bash
@@ -60,8 +60,8 @@ We welcome contributions from the community! This guide will help you get starte
 ### Building the Project
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/NexusDB/nexus-db.git
-   cd nexus-db
+   git clone https://github.com/SensibleDB/sensibledb-db.git
+   cd sensibledb-db
    ```
 
 2. **Build all components**:
@@ -75,14 +75,14 @@ We welcome contributions from the community! This guide will help you get starte
    ```
 
 ### Building Specific Components
-- **CLI only**: `cargo build -p nexus-cli`
-- **Core database**: `cargo build -p nexus-db`
-- **Container**: `cargo build -p nexus-container`
+- **CLI only**: `cargo build -p sensibledb-cli`
+- **Core database**: `cargo build -p sensibledb-db`
+- **Container**: `cargo build -p sensibledb-container`
 
-### Running NexusDB Locally
+### Running SensibleDB Locally
 1. Install the CLI (development version):
    ```bash
-   cargo install --path nexus-cli
+   cargo install --path sensibledb-cli
    ```
 
 2. Initialize a test project:
@@ -100,10 +100,10 @@ We welcome contributions from the community! This guide will help you get starte
 
 ### Core Components
 
-#### `/nexus-db/` - Main Database Library
-The heart of NexusDB containing all database functionality.
+#### `/sensibledb-db/` - Main Database Library
+The heart of SensibleDB containing all database functionality.
 
-- **`nexus_engine/`** - Database engine implementation
+- **`sensibledb_engine/`** - Database engine implementation
   - `bm25/` - Full-text search using BM25 algorithm
   - `storage_core/` - LMDB-based storage backend via heed3
   - `traversal_core/` - Graph traversal operations and query execution
@@ -112,7 +112,7 @@ The heart of NexusDB containing all database functionality.
   - `types.rs` - Core type definitions
   - `macros.rs` - Helper macros
 
-- **`nexus_gateway/`** - Network layer
+- **`sensibledb_gateway/`** - Network layer
   - `builtin/` - Built-in query handlers (node_by_id, all_nodes_and_edges, node_connections, nodes_by_label)
   - `embedding_providers/` - Integration with embedding services
   - `router/` - Request routing to handlers
@@ -121,7 +121,7 @@ The heart of NexusDB containing all database functionality.
   - `gateway.rs` - Main gateway implementation
   - `introspect_schema.rs` - Schema introspection utilities
 
-- **`nexusc/`** - Query compiler
+- **`sensibledbc/`** - Query compiler
   - `parser/` - Parser for `.hx` files (using Pest grammar)
   - `analyzer/` - Type checking, validation, and diagnostics
   - `generator/` - Rust code generation from parsed queries
@@ -132,7 +132,7 @@ The heart of NexusDB containing all database functionality.
 
 - **`utils/`** - Shared utilities across the codebase
 
-#### `/nexus-container/` - Runtime Container
+#### `/sensibledb-container/` - Runtime Container
 The server process that hosts compiled queries and handles requests.
 
 **Files:**
@@ -148,15 +148,15 @@ The server process that hosts compiled queries and handles requests.
 - Routes HTTP requests to registered handlers
 
 **Environment Variables:**
-- `NEXUS_DATA_DIR` - Database storage location
-- `NEXUS_PORT` - Server port
+- `SENSIBLE_DATA_DIR` - Database storage location
+- `SENSIBLE_PORT` - Server port
 
-#### `/nexus-cli/` - Command-Line Interface
-User-facing CLI for managing NexusDB instances and deployments.
+#### `/sensibledb-cli/` - Command-Line Interface
+User-facing CLI for managing SensibleDB instances and deployments.
 
 **Directory Structure:**
 ```
-nexus-cli/
+sensibledb-cli/
 ├── src/
 │   ├── commands/           # CLI command implementations
 │   │   ├── integrations/   # Cloud deployment integrations
@@ -164,7 +164,7 @@ nexus-cli/
 │   │   │   ├── ecr.rs      # AWS ECR
 │   │   │   ├── fly.rs      # Fly.io
 │   │   │   ├── ghcr.rs     # GitHub Container Registry
-│   │   │   └── nexus.rs    # Nexus Cloud
+│   │   │   └── nexus.rs    # SensibleDB Cloud
 │   │   ├── add.rs         # Add dependencies
 │   │   ├── auth.rs        # Authentication (login/logout/create-key)
 │   │   ├── build.rs       # Build queries
@@ -212,7 +212,7 @@ nexus-cli/
 - `nexus update` - Update CLI to latest version
 
 **Deployment Integrations:**
-- Nexus Cloud (managed hosting)
+- SensibleDB Cloud (managed hosting)
 - AWS ECR (Elastic Container Registry)
 - Fly.io
 - Docker Hub
@@ -221,7 +221,7 @@ nexus-cli/
 
 **Build & Deploy Flow:**
 1. Read `.hx` files (schema.hx, queries.hx)
-2. Parse and analyze using nexusc
+2. Parse and analyze using sensibledbc
 3. Generate Rust code with handler functions
 4. Write to container/src/queries.rs
 5. Build release binary with optimizations
@@ -229,8 +229,8 @@ nexus-cli/
 
 ### Supporting Components
 
-#### `/nexus-macros/` - Procedural Macros
-Procedural macros for NexusDB including route registration and code generation utilities.
+#### `/sensibledb-macros/` - Procedural Macros
+Procedural macros for SensibleDB including route registration and code generation utilities.
 
 #### `/nql-tests/` - NQL Test Suite
 Test files for the Nexus Query Language (NQL).
@@ -241,7 +241,7 @@ Performance benchmarking and metrics collection.
 ## Key Concepts
 
 ### Query Language
-NexusDB uses a custom query language defined in `.hx` files:
+SensibleDB uses a custom query language defined in `.hx` files:
 ```
 QUERY addUser(name: String, age: I64) =>
    user <- AddN<User({name: name, age: age})
@@ -289,20 +289,20 @@ The `clippy_check.sh` script at the repository root runs clippy with project-spe
 
 ### Testing
 
-NexusDB has a comprehensive test suite organized across multiple levels:
+SensibleDB has a comprehensive test suite organized across multiple levels:
 
 #### Test Structure
 
 **Unit Tests** (within `src/` directories)
-- `/nexus-db/src/nexus_engine/tests/` - Engine unit tests
-- `/nexus-db/src/nexus_gateway/tests/` - Gateway unit tests
+- `/sensibledb-db/src/sensibledb_engine/tests/` - Engine unit tests
+- `/sensibledb-db/src/sensibledb_gateway/tests/` - Gateway unit tests
 - Inline `#[cfg(test)]` modules throughout the codebase
 
 **Integration Tests**
-- `/nexus-db/tests/` - Database integration tests
+- `/sensibledb-db/tests/` - Database integration tests
 
 **CLI Tests**
-- `/nexus-cli/src/tests/` - Command-line interface tests
+- `/sensibledb-cli/src/tests/` - Command-line interface tests
   - `check_tests.rs` - Validation testing
   - `compile_tests.rs` - Compilation testing
   - `init_tests.rs` - Project initialization
@@ -321,8 +321,8 @@ NexusDB has a comprehensive test suite organized across multiple levels:
   - Benchmarks
 
 **Benchmark Tests**
-- `/nexus-db/benches/bm25_benches.rs` - Full-text search performance
-- `/nexus-db/benches/hnsw_benches.rs` - Vector search performance
+- `/sensibledb-db/benches/bm25_benches.rs` - Full-text search performance
+- `/sensibledb-db/benches/hnsw_benches.rs` - Vector search performance
 
 #### Running Tests
 
@@ -331,8 +331,8 @@ NexusDB has a comprehensive test suite organized across multiple levels:
 cargo test --workspace
 
 # Run specific crate tests
-cargo test -p nexus-db
-cargo test -p nexus-cli
+cargo test -p sensibledb-db
+cargo test -p sensibledb-cli
 
 # Run NQL tests
 cd nql-tests
@@ -358,9 +358,9 @@ cargo test --benches
 
 ### Getting Help
 - **Discord**: Join our [Discord community](https://discord.gg/2stgMPr5BD) for real-time discussions, questions, and support
-- **GitHub Issues**: Report bugs or request features at [github.com/NexusDB/nexus-db/issues](https://github.com/NexusDB/nexus-db/issues)
-- **Documentation**: Check [docs.nexus-db.com](https://docs.nexus-db.com) for comprehensive guides
-- **Twitter/X**: Follow [@nexusdb](https://x.com/nexusdb) for updates and announcements
+- **GitHub Issues**: Report bugs or request features at [github.com/SensibleDB/sensibledb-db/issues](https://github.com/SensibleDB/sensibledb-db/issues)
+- **Documentation**: Check [docs.sensibledb-db.com](https://docs.sensibledb-db.com) for comprehensive guides
+- **Twitter/X**: Follow [@sensibledb](https://x.com/sensibledb) for updates and announcements
 
 ### Before You Ask
 - Search existing GitHub issues and Discord for similar questions
@@ -379,7 +379,7 @@ cargo test --benches
 ### What Reviewers Look For
 - **Correctness**: Does the code work as intended?
 - **Tests**: Are there adequate tests? Do they pass?
-- **Code style**: Does it follow Rust and NexusDB conventions?
+- **Code style**: Does it follow Rust and SensibleDB conventions?
 - **Performance**: Are there obvious performance issues?
 - **Documentation**: Are complex parts explained?
 - **Scope**: Is the PR focused on a single feature/fix?
@@ -408,7 +408,7 @@ cargo test --benches
 
 ## Getting Started
 
-1. Install CLI: `curl -sSL "https://install.nexus-db.com" | bash`
+1. Install CLI: `curl -sSL "https://install.sensibledb-db.com" | bash`
 2. Install Nexus: `nexus install`
 3. Initialize project: `nexus init --path <path>`
 4. Write queries in `.hx` files
@@ -417,4 +417,4 @@ cargo test --benches
 ## License
 AGPL (Affero General Public License)
 
-For commercial support: founders@nexus-db.com
+For commercial support: founders@sensibledb-db.com

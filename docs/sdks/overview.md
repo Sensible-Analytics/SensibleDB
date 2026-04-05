@@ -7,8 +7,8 @@ npm install nexus-ts
 ```
 
 ```typescript
-import NexusDB from "nexus-ts";
-const client = new NexusDB();
+import SensibleDB from "nexus-ts";
+const client = new SensibleDB();
 const user = await client.query("getUser", { name: "John" });
 ```
 
@@ -28,6 +28,6 @@ user = client.query("getUser", {"name": "John"})
 
 ```toml
 [dependencies]
-nexus-db = { version = "1.3", features = ["embedded"] }
+sensibledb-db = { version = "1.3", features = ["embedded"] }
 ```
 

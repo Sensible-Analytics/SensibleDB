@@ -11,8 +11,8 @@ fi
 file_name=$1
 
 
-nexus compile --path "/Users/xav/GitHub/nexus-db-core/nql-tests/tests/$file_name" --output "/Users/xav/GitHub/nexus-db-core/nexus-container/src"
-output=$(cargo check --manifest-path "/Users/xav/GitHub/nexus-db-core/nexus-container/Cargo.toml")
+nexus compile --path "/Users/xav/GitHub/sensibledb-db-core/nql-tests/tests/$file_name" --output "/Users/xav/GitHub/sensibledb-db-core/sensibledb-container/src"
+output=$(cargo check --manifest-path "/Users/xav/GitHub/sensibledb-db-core/sensibledb-container/Cargo.toml")
 if [ $? -ne 0 ]; then
     echo "Error: Cargo check failed"
     echo "Cargo check output: $output"

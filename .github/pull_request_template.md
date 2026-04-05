@@ -16,7 +16,7 @@ Closes #
 - [ ] Doc comments are used for all functions, enums, structs, and fields (where appropriate)
 - [ ] All tests pass
 - [ ] Performance has not regressed (assuming change was not to fix a bug)
-- [ ] Version number has been updated in `nexus-cli/Cargo.toml` and `nexusdb/Cargo.toml`
+- [ ] Version number has been updated in `sensibledb-cli/Cargo.toml` and `sensibledb/Cargo.toml`
 
 ## Additional Notes
 <!-- Add any additional information that would be helpful for reviewers --> 

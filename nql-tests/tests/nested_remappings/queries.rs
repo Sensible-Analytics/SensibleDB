@@ -1,6 +1,6 @@
 
 // DEFAULT CODE
-// use nexus_db::nexus_engine::traversal_core::config::Config;
+// use sensibledb_db::sensibledb_engine::traversal_core::config::Config;
 
 // pub fn config() -> Option<Config> {
 //     None
@@ -10,9 +10,9 @@
 
 use bumpalo::Bump;
 use heed3::RoTxn;
-use nexus_macros::{handler, tool_call, mcp_handler, migration};
-use nexus_db::{
-    nexus_engine::{
+use sensibledb_macros::{handler, tool_call, mcp_handler, migration};
+use sensibledb_db::{
+    sensibledb_engine::{
         traversal_core::{
             config::{Config, GraphConfig, VectorConfig},
             ops::{
@@ -49,7 +49,7 @@ use nexus_db::{
         types::GraphError,
         vector_core::vector::HVector,
     },
-    nexus_gateway::{
+    sensibledb_gateway::{
         embedding_providers::{EmbeddingModel, get_embedding_model},
         router::router::{HandlerInput, IoContFn},
         mcp::mcp::{MCPHandlerSubmission, MCPToolInput, MCPHandler}

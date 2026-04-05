@@ -1,5 +1,5 @@
 // DEFAULT CODE
-// use nexus_db::nexus_engine::traversal_core::config::Config;
+// use sensibledb_db::sensibledb_engine::traversal_core::config::Config;
 
 // pub fn config() -> Option<Config> {
 //     None
@@ -8,9 +8,9 @@
 use bumpalo::Bump;
 use chrono::{DateTime, Utc};
 use heed3::RoTxn;
-use nexus_db::{
+use sensibledb_db::{
     embed, embed_async, field_addition_from_old_field, field_addition_from_value, field_type_cast,
-    nexus_engine::{
+    sensibledb_engine::{
         reranker::{
             RerankAdapter,
             fusion::{DistanceMethod, MMRReranker, RRFReranker},
@@ -56,7 +56,7 @@ use nexus_db::{
         types::GraphError,
         vector_core::vector::HVector,
     },
-    nexus_gateway::{
+    sensibledb_gateway::{
         embedding_providers::{EmbeddingModel, get_embedding_model},
         mcp::mcp::{MCPHandler, MCPHandlerSubmission, MCPToolInput},
         router::router::{HandlerInput, IoContFn},
@@ -76,7 +76,7 @@ use nexus_db::{
         properties::ImmutablePropertiesMap,
     },
 };
-use nexus_macros::{handler, mcp_handler, migration, tool_call};
+use sensibledb_macros::{handler, mcp_handler, migration, tool_call};
 use sonic_rs::{Deserialize, Serialize, json};
 use std::collections::{HashMap, HashSet};
 use std::sync::Arc;

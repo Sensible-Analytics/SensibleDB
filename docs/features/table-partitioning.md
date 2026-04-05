@@ -1,6 +1,6 @@
-# Table Partitioning in NexusDB
+# Table Partitioning in SensibleDB
 
-NexusDB supports table partitioning to improve query performance and manageability for large datasets. Partitioning allows you to divide a large table into smaller, more manageable pieces while maintaining the logical appearance of a single table.
+SensibleDB supports table partitioning to improve query performance and manageability for large datasets. Partitioning allows you to divide a large table into smaller, more manageable pieces while maintaining the logical appearance of a single table.
 
 ## Range Partitioning
 
@@ -70,7 +70,7 @@ CREATE TABLE user_profiles (
 
 ### Automatic Partition Creation
 
-NexusDB automatically creates partitions when data is inserted for a new partition key value, up to a configurable limit.
+SensibleDB automatically creates partitions when data is inserted for a new partition key value, up to a configurable limit.
 
 ## Hash Partitioning
 
@@ -180,7 +180,7 @@ REINDEX PARTITION sensor_data FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');
 
 ## Query Optimization with Partitioning
 
-NexusDB's query optimizer automatically eliminates partitions that cannot contain relevant data based on query predicates.
+SensibleDB's query optimizer automatically eliminates partitions that cannot contain relevant data based on query predicates.
 
 ### Partition Pruning Examples
 

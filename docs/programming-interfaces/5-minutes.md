@@ -1,14 +1,14 @@
-# NexusDB in 5 Minutes or Less
+# SensibleDB in 5 Minutes or Less
 
-A quick introduction to programming with NexusDB. This guide will get you up and running with basic operations in just a few minutes.
+A quick introduction to programming with SensibleDB. This guide will get you up and running with basic operations in just a few minutes.
 
 ## Installation
 
-First, add NexusDB to your Cargo.toml:
+First, add SensibleDB to your Cargo.toml:
 
 ```toml
 [dependencies]
-nexus-db = { version = "1.3", features = ["embedded"] }
+sensibledb-db = { version = "1.3", features = ["embedded"] }
 ```
 
 ## Basic CRUD Operations
@@ -16,11 +16,11 @@ nexus-db = { version = "1.3", features = ["embedded"] }
 Here's how to perform basic Create, Read, Update, Delete operations:
 
 ```rust
-use nexus_db::embedded::{Database, Node, Edge};
+use sensibledb_db::embedded::{Database, Node, Edge};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Open or create a database
-    let db = Database::open("./my_nexus_db")?;
+    let db = Database::open("./my_sensibledb_db")?;
     
     // Start a write transaction
     let mut tx = db.write_transaction()?;
@@ -55,13 +55,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Vector Search Example
 
-NexusDB includes built-in vector similarity search:
+SensibleDB includes built-in vector similarity search:
 
 ```rust
-use nexus_db::embedded::{Database, Node};
+use sensibledb_db::embedded::{Database, Node};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let db = Database::open("./my_nexus_db")?;
+    let db = Database::open("./my_sensibledb_db")?;
     let mut tx = db.write_transaction()?;
     
     // Create nodes with vector embeddings
@@ -96,10 +96,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 Explore relationships in your data:
 
 ```rust
-use nexus_db::embedded::{Database, Node, Edge};
+use sensibledb_db::embedded::{Database, Node, Edge};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let db = Database::open("./my_nexus_db")?;
+    let db = Database::open("./my_sensibledb_db")?;
     let mut tx = db.write_transaction()?;
     
     // Create a simple graph: Alice -> knows -> Bob -> knows -> Charlie

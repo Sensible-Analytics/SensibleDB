@@ -1,6 +1,6 @@
 # What is NexusQL?
 
-NexusQL is a **strongly typed, compiled query language** for NexusDB.
+NexusQL is a **strongly typed, compiled query language** for SensibleDB.
 
 ## Why NexusQL?
 

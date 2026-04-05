@@ -1,12 +1,12 @@
 # Architectural Guardrails
 
-> **Purpose**: This document defines the non-negotiable architectural principles, technology choices, and design constraints for NexusDB. All contributors and AI agents must adhere to these guardrails when proposing or implementing changes.
+> **Purpose**: This document defines the non-negotiable architectural principles, technology choices, and design constraints for SensibleDB. All contributors and AI agents must adhere to these guardrails when proposing or implementing changes.
 
 ---
 
 ## 1. System Identity
 
-**NexusDB is an Embedded Graph-Vector Database** built in Rust, designed to unify the data layer for AI applications. It eliminates the need for separate application DBs, vector DBs, graph DBs, and application layers.
+**SensibleDB is an Embedded Graph-Vector Database** built in Rust, designed to unify the data layer for AI applications. It eliminates the need for separate application DBs, vector DBs, graph DBs, and application layers.
 
 ---
 
@@ -18,8 +18,8 @@
 | **Storage Engine** | LMDB (Lightning Memory-Mapped Database) | ACID transactions, zero-copy reads, embedded-friendly |
 | **Query Language** | NexusQL (custom, type-safe) | Domain-specific, compile-time validation |
 | **Build System** | Cargo (workspace) | Multi-crate dependency management |
-| **CLI** | Rust (nexus-cli) | Cross-platform, single binary distribution |
-| **Container Runtime** | Rust (nexus-container) | Server deployment mode |
+| **CLI** | Rust (sensibledb-cli) | Cross-platform, single binary distribution |
+| **Container Runtime** | Rust (sensibledb-container) | Server deployment mode |
 | **SDKs** | TypeScript (`nexus-ts`), Python (`nexus-py`) | Primary AI application languages |
 | **Documentation** | MkDocs | Static site generation from markdown |
 | **E2E Testing** | Playwright + TypeScript | Browser-level integration testing |
@@ -32,11 +32,11 @@ The project is organized as a Cargo workspace with the following crates:
 
 | Crate | Path | Responsibility |
 |-------|------|----------------|
-| `nexus-db` | `nexus-db/` | Core database engine — storage, graph, vector, transactions |
-| `nexus-container` | `nexus-container/` | Server/container runtime for hosted deployments |
-| `nexus-macros` | `nexus-macros/` | Procedural macros for NexusQL compilation |
-| `nexus-cli` | `nexus-cli/` | CLI tool for project management and query deployment |
-| `nexus-explorer` | `nexus-explorer/` | Web-based data explorer UI |
+| `sensibledb-db` | `sensibledb-db/` | Core database engine — storage, graph, vector, transactions |
+| `sensibledb-container` | `sensibledb-container/` | Server/container runtime for hosted deployments |
+| `sensibledb-macros` | `sensibledb-macros/` | Procedural macros for NexusQL compilation |
+| `sensibledb-cli` | `sensibledb-cli/` | CLI tool for project management and query deployment |
+| `sensibledb-explorer` | `sensibledb-explorer/` | Web-based data explorer UI |
 | `metrics` | `metrics/` | Observability and metrics collection |
 | `nql-tests` | `nql-tests/` | NexusQL query language test suite |
 
@@ -45,7 +45,7 @@ The project is organized as a Cargo workspace with the following crates:
 ## 4. Architectural Principles
 
 ### 4.1 Embedded-First Design
-- NexusDB MUST function as a zero-dependency embedded library
+- SensibleDB MUST function as a zero-dependency embedded library
 - All core features must work without network calls or external services
 - Server mode is an extension, not the primary deployment model
 
@@ -96,7 +96,7 @@ The project is organized as a Cargo workspace with the following crates:
 - Queries use `QUERY name(params) => ... RETURN ...` syntax
 - All queries are compiled via `nexus check` before deployment
 - Queries are deployed via `nexus push <environment>`
-- Query compilation uses procedural macros (`nexus-macros`)
+- Query compilation uses procedural macros (`sensibledb-macros`)
 
 ---
 
@@ -142,7 +142,7 @@ Any architectural change that affects these guardrails MUST:
 - ❌ Do NOT add runtime type checking where compile-time is possible
 - ❌ Do NOT expose raw data through APIs — always go through NexusQL
 - ❌ Do NOT split graph and vector into separate systems
-- ❌ Do NOT add external dependencies to the core `nexus-db` crate without justification
+- ❌ Do NOT add external dependencies to the core `sensibledb-db` crate without justification
 - ❌ Do NOT change the AGPL license without maintainer consensus
 
 ---

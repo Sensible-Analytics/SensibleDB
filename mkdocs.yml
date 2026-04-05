@@ -1,8 +1,8 @@
-site_name: NexusDB Documentation
-site_description: Official documentation for NexusDB - the open-source graph-vector database
-site_url: https://sensible-analytics.github.io/NexusDB/
-repo_url: https://github.com/Sensible-Analytics/NexusDB
-repo_name: Sensible-Analytics/NexusDB
+site_name: SensibleDB Documentation
+site_description: Official documentation for SensibleDB - the open-source graph-vector database
+site_url: https://sensible-analytics.github.io/SensibleDB/
+repo_url: https://github.com/Sensible-Analytics/SensibleDB
+repo_name: Sensible-Analytics/SensibleDB
 
 theme:
   name: material
