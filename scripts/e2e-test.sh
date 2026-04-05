@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# E2E Test Script for NexusDB Explorer
+# E2E Test Script for SensibleDB Explorer
 # Tests: demo DB creation, node/edge CRUD, query execution
 set -euo pipefail
 
@@ -45,7 +45,7 @@ assert_contains() {
 
 main() {
     echo "========================================"
-    echo "NexusDB Explorer E2E Test Suite"
+    echo "SensibleDB Explorer E2E Test Suite"
     echo "========================================"
     echo ""
 
@@ -53,8 +53,8 @@ main() {
     log_info "=== Test 1: Demo DB Auto-Creation ==="
     if [ -n "${CI:-}" ]; then
         log_pass "Demo DB directory check skipped in CI (app not launched)"
-    elif [ -d "$HOME/.nexus/demo" ]; then
-        log_pass "Demo DB directory exists at ~/.nexus/demo"
+    elif [ -d "$HOME/.sensibledb/demo" ]; then
+        log_pass "Demo DB directory exists at ~/.sensibledb/demo"
     else
         log_fail "Demo DB directory not found"
     fi

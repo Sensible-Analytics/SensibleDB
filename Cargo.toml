@@ -1,12 +1,12 @@
 [workspace]
 members = [
-    "nexus-db",
-    "nexus-container",
-    "nexus-macros",
-    "nexus-cli",
+    "sensibledb-db",
+    "sensibledb-container",
+    "sensibledb-macros",
+    "sensibledb-cli",
     "nql-tests",
     "metrics",
-    "nexus-explorer",
+    "sensibledb-explorer",
 ]
 resolver = "2"
 

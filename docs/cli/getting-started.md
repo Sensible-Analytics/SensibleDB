@@ -1,34 +1,34 @@
-# Nexus CLI Guide
+# SensibleDB CLI Guide
 
 ## Installation
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
-nexus --version
+curl -sSL "https://install.sensibledb.com" | bash
+sensibledb --version
 ```
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| nexus init | Initialize a new project |
-| nexus check | Validate schema and queries |
-| nexus push dev | Deploy to local instance |
-| nexus status | Show instance status |
-| nexus start | Start an instance |
-| nexus stop | Stop an instance |
-| nexus logs | Stream instance logs |
-| nexus prune | Clean up unused resources |
-| nexus update | Update CLI |
+| sensibledb init | Initialize a new project |
+| sensibledb check | Validate schema and queries |
+| sensibledb push dev | Deploy to local instance |
+| sensibledb status | Show instance status |
+| sensibledb start | Start an instance |
+| sensibledb stop | Stop an instance |
+| sensibledb logs | Stream instance logs |
+| sensibledb prune | Clean up unused resources |
+| sensibledb update | Update CLI |
 
 ## Project Structure
 
 ```
 my-project/
-+-- nexus.toml      # Project configuration
++-- sensibledb.toml      # Project configuration
 +-- db/
 |   +-- schema.hx   # Schema definitions
 |   +-- queries.hx  # Query definitions
-+-- .nexus/         # Build artifacts
++-- .sensibledb/         # Build artifacts
 ```
 

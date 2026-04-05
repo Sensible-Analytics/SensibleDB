@@ -1,12 +1,12 @@
-# NexusDB Documentation
+# SensibleDB Documentation
 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
   - [Overview](#overview)
   - [Installation](#installation)
-- [NexusQL Query Language](#nexusql-query-language)
-  - [Overview](#nexusql-overview)
+- [NQL Query Language](#nql-query-language)
+  - [Overview](#nql-overview)
   - [Schema Definition](#schema-definition)
   - [CRUD Operations](#crud-operations)
   - [Graph Traversals](#graph-traversals)
@@ -21,9 +21,9 @@
 
 ### Overview
 
-NexusDB is a high-performance **graph-vector database** built from scratch in Rust, with its own query language designed for traversing and manipulating graph and vector data efficiently.
+SensibleDB is a high-performance **graph-vector database** built from scratch in Rust, with its own query language designed for traversing and manipulating graph and vector data efficiently.
 
-NexusDB makes it easy to build all components needed for an AI application in a single platform. You no longer need a separate application DB, vector DB, graph DB, or application layers. Just use NexusDB.
+SensibleDB makes it easy to build all components needed for an AI application in a single platform. You no longer need a separate application DB, vector DB, graph DB, or application layers. Just use SensibleDB.
 
 #### Key Features
 
@@ -62,28 +62,28 @@ apt install liblmdb-dev    # Ubuntu/Debian
 pacman -S lmdb             # Arch Linux
 ```
 
-#### Step 1: Install NexusCLI
+#### Step 1: Install SensibleDB CLI
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
-nexus --version
+curl -sSL "https://install.sensibledb.com" | bash
+sensibledb --version
 ```
 
 #### Step 2: Initialize a Project
 
 ```bash
 mkdir my-project && cd my-project
-nexus init
+sensibledb init
 ```
 
 Creates:
 ```
 my-project/
-├── nexus.toml      # Project configuration
+├── sensibledb.toml      # Project configuration
 ├── db/
 │   ├── schema.hx   # Schema definitions
 │   └── queries.hx  # Query definitions
-└── .nexus/         # Build artifacts
+└── .sensibledb/         # Build artifacts
 ```
 
 #### Step 3: Write Schema and Queries
@@ -123,8 +123,8 @@ QUERY getUserFollowers(user_id: ID) =>
 #### Step 4: Check and Deploy
 
 ```bash
-nexus check      # Validate compilation
-nexus push dev   # Deploy locally
+sensibledb check      # Validate compilation
+sensibledb push dev   # Deploy locally
 ```
 
 #### Step 5: Test
@@ -141,15 +141,15 @@ curl -X POST http://localhost:6969/getUser \
 
 ---
 
-## NexusQL Query Language
+## NQL Query Language
 
 ### Overview
 
-NexusQL is a **strongly typed, compiled query language** for NexusDB that combines the best features of Gremlin, Cypher, and Rust.
+NQL is a **strongly typed, compiled query language** for SensibleDB that combines the best features of Gremlin, Cypher, and Rust.
 
-#### Why NexusQL?
+#### Why NQL?
 
-| Feature | NexusQL | Gremlin | Cypher |
+| Feature | NQL | Gremlin | Cypher |
 |---------|---------|---------|--------|
 | Type Safety | Compile-time | Runtime | Runtime |
 | Syntax | Clean, concise | Verbose | Readable |
@@ -357,17 +357,17 @@ QUERY diverseResults(query: String) =>
 
 | Command | Description |
 |---------|-------------|
-| `nexus init` | Initialize a new project |
-| `nexus check` | Validate schema and queries |
-| `nexus push dev` | Deploy to local instance |
-| `nexus status` | Show instance status |
-| `nexus start <name>` | Start an instance |
-| `nexus stop <name>` | Stop an instance |
-| `nexus logs` | Stream instance logs |
-| `nexus prune` | Clean up unused resources |
-| `nexus update` | Update CLI to latest version |
+| `sensibledb init` | Initialize a new project |
+| `sensibledb check` | Validate schema and queries |
+| `sensibledb push dev` | Deploy to local instance |
+| `sensibledb status` | Show instance status |
+| `sensibledb start <name>` | Start an instance |
+| `sensibledb stop <name>` | Stop an instance |
+| `sensibledb logs` | Stream instance logs |
+| `sensibledb prune` | Clean up unused resources |
+| `sensibledb update` | Update CLI to latest version |
 
-### Configuration (nexus.toml)
+### Configuration (sensibledb.toml)
 
 ```toml
 [project]
@@ -390,23 +390,23 @@ port = 6969
 ### TypeScript
 
 ```bash
-npm install nexus-ts
+npm install sensibledb-ts
 ```
 
 ```typescript
-import NexusDB from "nexus-ts";
-const client = new NexusDB();
+import SensibleDB from "sensibledb-ts";
+const client = new SensibleDB();
 const user = await client.query("getUser", { name: "John" });
 ```
 
 ### Python
 
 ```bash
-pip install nexus-py
+pip install sensibledb-py
 ```
 
 ```python
-from nexus import Client
+from sensibledb import Client
 client = Client(local=True, port=6969)
 user = client.query("getUser", {"name": "John"})
 ```
@@ -415,11 +415,11 @@ user = client.query("getUser", {"name": "John"})
 
 ```toml
 [dependencies]
-nexus-db = { version = "1.3", features = ["embedded"] }
+sensibledb-db = { version = "1.3", features = ["embedded"] }
 ```
 
 ```rust
-use nexus_db::embedded::{Database, Node};
+use sensibledb_db::embedded::{Database, Node};
 let db = Database::open("./my_db")?;
 ```
 
@@ -437,7 +437,7 @@ Use `Embed()` directly in queries — no external embedding service needed.
 Vector search, BM25 keyword search, graph traversals, hybrid search with RRF, and MMR reranking.
 
 ### Security
-Private by default. Data accessible only through compiled NexusQL queries. Type-safe queries prevent injection attacks.
+Private by default. Data accessible only through compiled NQL queries. Type-safe queries prevent injection attacks.
 
 ### Ultra-Low Latency
 Rust + LMDB memory-mapped B-trees for near-zero overhead access.

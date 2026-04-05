@@ -267,9 +267,9 @@ async fn main() -> Result<()> {
     println!("DEBUG: Build script path: {}", build_script_path.display());
     println!("DEBUG: Build script exists: {}", build_script_path.exists());
 
-    let nexus_cli_dir = project_root.join("nexus-cli");
-    println!("DEBUG: Nexus CLI dir: {}", nexus_cli_dir.display());
-    println!("DEBUG: Nexus CLI dir exists: {}", nexus_cli_dir.exists());
+    let sensibledb_cli_dir = project_root.join("nexus-cli");
+    println!("DEBUG: Nexus CLI dir: {}", sensibledb_cli_dir.display());
+    println!("DEBUG: Nexus CLI dir exists: {}", sensibledb_cli_dir.exists());
 
     // Check if nexus is already available
     let nexus_check = Command::new("nexus").arg("--version").output();
@@ -293,7 +293,7 @@ async fn main() -> Result<()> {
     let output = Command::new("sh")
         .arg("build.sh")
         .arg("dev")
-        .current_dir(&nexus_cli_dir) // Change to nexus-cli directory first
+        .current_dir(&sensibledb_cli_dir) // Change to nexus-cli directory first
         .output()
         .context("Failed to execute build.sh")?;
 
@@ -580,8 +580,8 @@ async fn process_test_directory(
 
     // Copy the entire nexus-db project structure for cargo check
     // But skip .nexus directory to avoid conflicts
-    let nexus_db_dir = temp_dir.join("nexus-db");
-    fs::create_dir_all(&nexus_db_dir).await?;
+    let sensibledb_db_dir = temp_dir.join("nexus-db");
+    fs::create_dir_all(&sensibledb_db_dir).await?;
 
     // Copy all project crates and dependencies (excluding nql-tests to avoid conflicts)
     let crates_to_copy = vec![
@@ -594,7 +594,7 @@ async fn process_test_directory(
 
     for crate_name in crates_to_copy {
         let src = temp_repo.join(crate_name);
-        let dst = nexus_db_dir.join(crate_name);
+        let dst = sensibledb_db_dir.join(crate_name);
         if src.exists() {
             copy_dir_recursive(&src, &dst).await?;
         }
@@ -602,7 +602,7 @@ async fn process_test_directory(
 
     // Copy root Cargo.toml and Cargo.lock, but remove nql-tests from workspace
     let cargo_toml_src = temp_repo.join("Cargo.toml");
-    let cargo_toml_dst = nexus_db_dir.join("Cargo.toml");
+    let cargo_toml_dst = sensibledb_db_dir.join("Cargo.toml");
     if cargo_toml_src.exists() {
         // Read the Cargo.toml and remove nql-tests from workspace members
         let cargo_content = fs::read_to_string(&cargo_toml_src).await?;
@@ -611,7 +611,7 @@ async fn process_test_directory(
     }
 
     let cargo_lock_src = temp_repo.join("Cargo.lock");
-    let cargo_lock_dst = nexus_db_dir.join("Cargo.lock");
+    let cargo_lock_dst = sensibledb_db_dir.join("Cargo.lock");
     if cargo_lock_src.exists() {
         fs::copy(&cargo_lock_src, &cargo_lock_dst).await?;
     }
@@ -684,11 +684,11 @@ async fn process_test_directory(
     }
 
     // Run cargo check on the nexus container path
-    let nexus_container_path = temp_dir.join("nexus-db/nexus-container");
-    if nexus_container_path.exists() {
+    let sensibledb_container_path = temp_dir.join("nexus-db/nexus-container");
+    if sensibledb_container_path.exists() {
         let output = Command::new("cargo")
             .arg("check")
-            .current_dir(&nexus_container_path)
+            .current_dir(&sensibledb_container_path)
             .output()
             .context("Failed to execute cargo check")?;
 

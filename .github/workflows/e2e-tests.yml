@@ -4,8 +4,8 @@ on:
   pull_request:
     branches: [ main, dev ]
     paths:
-      - 'nexus-explorer/**'
-      - 'nexus-db/**'
+      - 'sensibledb-explorer/**'
+      - 'sensibledb-db/**'
       - 'e2e/**'
       - 'playwright.config.ts'
       - 'scripts/e2e-test.sh'
@@ -14,8 +14,8 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'nexus-explorer/**'
-      - 'nexus-db/**'
+      - 'sensibledb-explorer/**'
+      - 'sensibledb-db/**'
       - 'e2e/**'
       - 'playwright.config.ts'
       - 'scripts/e2e-test.sh'

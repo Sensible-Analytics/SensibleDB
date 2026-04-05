@@ -31,7 +31,7 @@ jobs:
 
       - name: Build
         run: |
-          cd nexus-cli
+          cd sensibledb-cli
           cargo build --release --target x86_64-apple-darwin
 
       - name: Upload Release Asset

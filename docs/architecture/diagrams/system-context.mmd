@@ -1,19 +1,19 @@
 ---
-title: NexusDB - System Context Diagram (C4 Level 1)
+title: SensibleDB - System Context Diagram (C4 Level 1)
 ---
 
 graph TB
     subgraph External["External Systems"]
-        Developer["👤 Developer<br/>Writes NexusQL schemas & queries"]
+        Developer["👤 Developer<br/>Writes NQL schemas & queries"]
         AIApp["🤖 AI Application<br/>RAG, Agents, LLM Apps"]
         MCPClient["🔧 MCP Client<br/>AI Agent Tool Discovery"]
     end
 
-    subgraph NexusDB["NexusDB - Embedded Graph-Vector Database"]
-        CLI["Nexus CLI<br/>nexus-cli"]
-        Server["Nexus Server<br/>nexus-container"]
-        Engine["Core Engine<br/>nexus-db"]
-        Explorer["Nexus Explorer<br/>nexus-explorer"]
+    subgraph SensibleDB["SensibleDB - Embedded Graph-Vector Database"]
+        CLI["SensibleDB CLI<br/>sensibledb-cli"]
+        Server["SensibleDB Server<br/>sensibledb-container"]
+        Engine["Core Engine<br/>sensibledb-db"]
+        Explorer["SensibleDB Explorer<br/>sensibledb-explorer"]
     end
 
     subgraph Storage["Storage Layer"]
@@ -21,8 +21,8 @@ graph TB
     end
 
     subgraph SDKs["Client SDKs"]
-        TSSDK["TypeScript SDK<br/>nexus-ts"]
-        PySDK["Python SDK<br/>nexus-py"]
+        TSSDK["TypeScript SDK<br/>sensibledb-ts"]
+        PySDK["Python SDK<br/>sensibledb-py"]
     end
 
     Developer -->|nexus init/check/push| CLI

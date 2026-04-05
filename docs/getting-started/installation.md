@@ -8,18 +8,18 @@
 
 ## Steps
 
-### 1. Install NexusCLI
+### 1. Install SensibleDB CLI
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
-nexus --version
+curl -sSL "https://install.sensibledb.com" | bash
+sensibledb --version
 ```
 
 ### 2. Initialize Project
 
 ```bash
 mkdir my-project && cd my-project
-nexus init
+sensibledb init
 ```
 
 ### 3. Write Schema and Queries
@@ -53,8 +53,8 @@ QUERY getUser(name: String) =>
 ### 4. Check and Deploy
 
 ```bash
-nexus check
-nexus push dev
+sensibledb check
+sensibledb push dev
 ```
 
 ### 5. Test
@@ -67,7 +67,7 @@ curl -X POST http://localhost:6969/createUser \
 
 ## Best Practices
 
-- Always run `nexus check` before deploying
+- Always run `sensibledb check` before deploying
 - Use `build_mode = "release"` for production
 - Never commit credentials to version control
 

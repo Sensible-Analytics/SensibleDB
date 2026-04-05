@@ -1,10 +1,10 @@
 # NQL Tests Runner
 
-A test runner for processing nexus files with automatic GitHub issue creation for errors.
+A test runner for processing sensibledb files with automatic GitHub issue creation for errors.
 
 ## Features
 
-- Process individual nexus files or all files (1-100) in parallel
+- Process individual sensibledb files or all files (1-100) in parallel
 - Automatic GitHub issue creation for compilation and cargo check errors
 - Duplicate issue prevention using error hashing
 - Clean temporary directory management
@@ -27,8 +27,8 @@ To enable automatic GitHub issue creation, set the following environment variabl
 
 ```bash
 export GITHUB_TOKEN="your_personal_access_token"
-export GITHUB_OWNER="NexusDB"           # Optional, defaults to "NexusDB"
-export GITHUB_REPO="nexus-db"           # Optional, defaults to "nexus-db"
+export GITHUB_OWNER="SensibleDB"           # Optional, defaults to "SensibleDB"
+export GITHUB_REPO="sensibledb-db"           # Optional, defaults to "sensibledb-db"
 ```
 
 #### Creating a GitHub Personal Access Token
@@ -53,18 +53,18 @@ When an error occurs during processing:
 
 ### Error Types Handled
 
-- **Nexus Compilation Errors**: Issues created when nexus compile fails
+- **SensibleDB Compilation Errors**: Issues created when sensibledb compile fails
 - **Cargo Check Errors**: Issues created when cargo check fails
 
 ### Example Issue
 
 ```
-Title: Auto-generated: Nexus Compilation Error in file42
+Title: Auto-generated: SensibleDB Compilation Error in file42
 
 Body:
 ## Automatic Error Report
 
-**Error Type:** Nexus Compilation
+**Error Type:** SensibleDB Compilation
 **File:** file42
 **Error Hash:** ERROR_HASH:abc123def456
 
@@ -80,7 +80,7 @@ Body:
 ## Requirements
 
 - Rust 1.70+
-- `nexus` CLI tool installed
+- `sensibledb` CLI tool installed
 - GitHub personal access token (for issue creation)
 - Internet connection (for GitHub API calls)
 

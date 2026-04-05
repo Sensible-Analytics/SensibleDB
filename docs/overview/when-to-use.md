@@ -1,11 +1,11 @@
-# When to Use NexusDB
+# When to Use SensibleDB
 
-This document helps you determine when NexusDB is the right choice for your application versus when a more specialized or traditional database approach might be better.
+This document helps you determine when SensibleDB is the right choice for your application versus when a more specialized or traditional database approach might be better.
 
-## Ideal Use Cases for NexusDB
+## Ideal Use Cases for SensibleDB
 
 ### AI-Powered Applications
-NexusDB excels when building applications that require:
+SensibleDB excels when building applications that require:
 - **Retrieval-Augmented Generation (RAG)**: Combining semantic search with generative AI
 - **Intelligent Agents**: Systems that need to understand relationships between entities
 - **Knowledge Graphs**: Representing and querying interconnected information
@@ -13,21 +13,21 @@ NexusDB excels when building applications that require:
 - **Recommendation Systems**: Leveraging both content similarity and relationship patterns
 
 ### Applications Benefiting from Multi-Model Data
-Consider NexusDB when your data naturally fits multiple models:
+Consider SensibleDB when your data naturally fits multiple models:
 - **Entities with Attributes**: Traditional document/relational data
 - **Relationships Between Entities**: Graph connections and traversals
 - **Semantic Meaning**: Vector representations for similarity search
 - **Temporal Aspects**: Time-series data and temporal relationships
 
 ### Development and Operational Benefits
-NexusDB provides advantages when you value:
+SensibleDB provides advantages when you value:
 - **Reduced Operational Complexity**: Single database instead of multiple specialized systems
 - **Development Velocity**: Fewer moving parts and integration points
 - **Consistency Guarantees**: ACID transactions across all data models
 - **Performance Characteristics**: Optimized for the access patterns of AI workloads
 - **Deployment Simplicity**: Embedded mode for easy distribution
 
-## When NexusDB Might Not Be the Best Choice
+## When SensibleDB Might Not Be the Best Choice
 
 ### Pure Relational Workloads
 If your application is primarily:
@@ -53,7 +53,7 @@ Consider: Evaluating compatibility layers or gradual migration strategies
 
 ## Decision Framework
 
-### Choose NexusDB When:
+### Choose SensibleDB When:
 1. You're building AI/RAG applications that need both relationships and similarity search
 2. You want to reduce the number of databases in your architecture
 3. You value type safety and compile-time query validation
@@ -70,8 +70,8 @@ Consider: Evaluating compatibility layers or gradual migration strategies
 
 ## Hybrid Approaches
 
-NexusDB can work alongside other systems in complementary roles:
-- **Primary AI Database**: NexusDB for AI-specific workloads
+SensibleDB can work alongside other systems in complementary roles:
+- **Primary AI Database**: SensibleDB for AI-specific workloads
 - **System of Record**: Traditional DB for financial/user account data
 - **Cache Layer**: Redis for hot data that doesn't need persistence
 - **Search Engine**: Elasticsearch for full-text search when needed
@@ -81,14 +81,14 @@ The key is using each system for what it does best while minimizing unnecessary 
 
 ## Evaluation Checklist
 
-When evaluating NexusDB for your project, consider:
+When evaluating SensibleDB for your project, consider:
 - [] Does your data benefit from both graph relationships and vector similarity?
 - [ ] Are you building AI agents, RAG systems, or knowledge graphs?
 - [ ] Would reducing database complexity improve development velocity?
 - [ ] Is the Rust ecosystem a fit for your team and deployment targets?
 - [ ] Do you need embedded database capabilities for distribution?
-- [ ] Are your performance requirements aligned with NexusDB's strengths?
+- [ ] Are your performance requirements aligned with SensibleDB's strengths?
 - [ ] Do you value type safety and compile-time guarantees?
 - [ ] Is operational simplicity a priority for your team?
 
-Answering "yes" to several of these questions suggests NexusDB is worth serious consideration for your project.
+Answering "yes" to several of these questions suggests SensibleDB is worth serious consideration for your project.

@@ -1,8 +1,8 @@
-# Table Partitioning Feature Plan for Nexus TP
+# Table Partitioning Feature Plan for SensibleDB
 
 ## Feature Overview
 
-Table partitioning is a database optimization technique that divides large tables into smaller, more manageable pieces called partitions, while maintaining the logical appearance of a single table. This feature improves query performance, simplifies data management, and enhances maintainability for large datasets in Nexus TP (Nexus Table Partitioning).
+Table partitioning is a database optimization technique that divides large tables into smaller, more manageable pieces called partitions, while maintaining the logical appearance of a single table. This feature improves query performance, simplifies data management, and enhances maintainability for large datasets in SensibleDB (SensibleDB Table Partitioning).
 
 ## Goals
 
@@ -65,7 +65,7 @@ Table partitioning is a database optimization technique that divides large table
    - Migration path from non-partitioned to partitioned tables
 
 4. **Compatibility**
-   - Should work with existing NexusTP features (indexes, transactions, etc.)
+   - Should work with existing SensibleDB features (indexes, transactions, etc.)
    - Should not break existing SQL queries when applied to existing tables
    - Client drivers should work without modification
 
@@ -141,14 +141,14 @@ CREATE TABLE measurements (
 
 ### System Tables and Views
 
-- `nexus_partitions`: Virtual table showing partition information
-- `nexus_partition_keys`: Metadata about partitioning keys
-- `nexus_subpartition_templates`: Composite partitioning definitions
+- `sensibledb_partitions`: Virtual table showing partition information
+- `sensibledb_partition_keys`: Metadata about partitioning keys
+- `sensibledb_subpartition_templates`: Composite partitioning definitions
 
 ### Command-Line Tools
 
-- `nexus-partitions`: Utility for viewing and managing partitions
-- `nexus-rebalance`: Tool for redistributing data when changing partition schemes
+- `sensibledb-partitions`: Utility for viewing and managing partitions
+- `sensibledb-rebalance`: Tool for redistributing data when changing partition schemes
 
 ## Migration Strategy
 
@@ -197,7 +197,7 @@ CREATE TABLE measurements (
 - Verify all SQL syntax examples work
 - Check that code samples are complete and runnable
 - Validate cross-references to related documentation
-- Ensure tone and style match existing NexusDB documentation
+- Ensure tone and style match existing SensibleDB documentation
 
 ## Risks and Mitigations
 
@@ -222,7 +222,7 @@ CREATE TABLE measurements (
 1. **Performance**: Range queries with predicate on partition key show 50-90% reduction in execution time for appropriately partitioned tables
 2. **Usability**: Developers can create and use partitioned tables after reading documentation without external help
 3. **Reliability**: No data loss or corruption in failure scenarios involving partitioned tables
-4. **Compatibility**: All existing NexusTP features work with partitioned tables
+4. **Compatibility**: All existing SensibleDB features work with partitioned tables
 5. **Adoption**: Feature used in at least 2 internal projects within 3 months of release
 
 ## Timeline

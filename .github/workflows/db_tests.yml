@@ -4,14 +4,14 @@ on:
   pull_request:
     branches: [ main, dev ]
     paths:
-      - 'nexus-macros/**'
-      - 'nexus-db/**'
+      - 'sensibledb-macros/**'
+      - 'sensibledb-db/**'
       - 'Cargo.toml'
       - 'Cargo.lock'
 
 jobs:
   test:
-    name: Test nexus_engine
+    name: Test sensibledb_engine
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -39,5 +39,5 @@ jobs:
           
     - name: Run tests
       run: |
-        cd nexus-db
+        cd sensibledb-db
         cargo test --release --lib -- --skip concurrency_tests

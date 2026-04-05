@@ -1,6 +1,6 @@
-# Table Partitioning in NexusDB
+# Table Partitioning in SensibleDB
 
-NexusDB supports table partitioning to improve query performance and manageability for large datasets. Partitioning allows you to divide a large table into smaller, more manageable pieces while maintaining the logical appearance of a single table.
+SensibleDB supports table partitioning to improve query performance and manageability for large datasets. Partitioning allows you to divide a large table into smaller, more manageable pieces while maintaining the logical appearance of a single table.
 
 ## Range Partitioning
 
@@ -70,7 +70,7 @@ CREATE TABLE user_profiles (
 
 ### Automatic Partition Creation
 
-NexusDB automatically creates partitions when data is inserted for a new partition key value, up to a configurable limit.
+SensibleDB automatically creates partitions when data is inserted for a new partition key value, up to a configurable limit.
 
 ## Hash Partitioning
 
@@ -144,10 +144,10 @@ CREATE TABLE financial_transactions (
 
 ### Viewing Partition Information
 
-Use the `nexus-partitions` command-line tool or query the `nexus_partitions` virtual table:
+Use the `sensibledb-partitions` command-line tool or query the `sensibledb_partitions` virtual table:
 
 ```sql
-SELECT * FROM nexus_partitions WHERE table_name = 'sensor_data';
+SELECT * FROM sensibledb_partitions WHERE table_name = 'sensor_data';
 ```
 
 ### Adding Partitions
@@ -180,7 +180,7 @@ REINDEX PARTITION sensor_data FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');
 
 ## Query Optimization with Partitioning
 
-NexusDB's query optimizer automatically eliminates partitions that cannot contain relevant data based on query predicates.
+SensibleDB's query optimizer automatically eliminates partitions that cannot contain relevant data based on query predicates.
 
 ### Partition Pruning Examples
 
@@ -229,5 +229,5 @@ Avoid partitioning when:
 
 - [Indexes on Expressions](./indexes-on-expressions.md) - For indexing partitioning keys
 - [Query Optimizer](./overview-of-the-query-optimizer.md) - How partition pruning works
-- [Virtual Tables](./virtual-tables.md) - The `nexus_partitions` virtual table
+- [Virtual Tables](./virtual-tables.md) - The `sensibledb_partitions` virtual table
 - [Limits](./limits.md) - Configuration limits for partitioning
