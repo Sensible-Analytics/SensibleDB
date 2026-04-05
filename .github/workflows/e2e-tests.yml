@@ -39,6 +39,12 @@ jobs:
         with:
           version: 10
 
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install root dependencies
+        run: npm install
+
       - name: Install frontend dependencies
         working-directory: nexus-explorer/src/frontend
         run: pnpm install
