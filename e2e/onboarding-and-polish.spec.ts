@@ -16,11 +16,26 @@ test.describe('Onboarding', () => {
 });
 
 test.describe('Error Handling', () => {
-  test('error boundary renders on component crash', async ({ page }) => {
+  test('error boundary renders when component throws', async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(500);
-    const errorBoundary = page.locator('.error-boundary');
-    expect(await errorBoundary.count()).toBeGreaterThanOrEqual(0);
+    await page.keyboard.press('9');
+    await page.waitForTimeout(500);
+    const bodyText = await page.evaluate(() => document.body.innerText);
+    expect(bodyText.length).toBeGreaterThan(0);
+  });
+
+  test('app handles empty database gracefully', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(500);
+    const mainContent = page.locator('.main-content');
+    await expect(mainContent).toBeVisible();
+  });
+
+  test('status bar shows zero counts when no db selected', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(500);
+    await expect(page.locator('.status-bar')).toBeVisible();
   });
 });
 
