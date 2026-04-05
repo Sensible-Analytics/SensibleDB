@@ -27,8 +27,8 @@ To enable automatic GitHub issue creation, set the following environment variabl
 
 ```bash
 export GITHUB_TOKEN="your_personal_access_token"
-export GITHUB_OWNER="NexusDB"           # Optional, defaults to "NexusDB"
-export GITHUB_REPO="nexus-db"           # Optional, defaults to "nexus-db"
+export GITHUB_OWNER="SensibleDB"           # Optional, defaults to "SensibleDB"
+export GITHUB_REPO="sensibledb-db"           # Optional, defaults to "sensibledb-db"
 ```
 
 #### Creating a GitHub Personal Access Token

@@ -4,21 +4,21 @@ on:
   pull_request:
     branches: [ main, dev ]
     paths:
-      - 'nexus-macros/**'
-      - 'nexus-db/**'
+      - 'sensibledb-macros/**'
+      - 'sensibledb-db/**'
       - 'Cargo.toml'
       - 'Cargo.lock'
 
 
 jobs:
   test:
-    name: Test nexus_engine in dev instance mode
+    name: Test sensibledb_engine in dev instance mode
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     env:
-      NEXUS_API_KEY: "12345678901234567890123456789012"
+      SENSIBLE_API_KEY: "12345678901234567890123456789012"
 
     steps:
     - uses: actions/checkout@v4
@@ -40,5 +40,5 @@ jobs:
 
     - name: Run dev instance tests
       run: |
-        cd nexus-db
+        cd sensibledb-db
         cargo test --release --lib --features dev-instance -- --skip concurrency_tests

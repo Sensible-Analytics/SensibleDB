@@ -498,7 +498,7 @@ QUERY AddDocumentChunkText(
 // SECTION 2: EDGE CREATION (Seed)
 //
 // Edge queries resolve nodes by externalId (indexed secondary lookup) then
-// create edges using the resolved NexusDB internal IDs. This eliminates the
+// create edges using the resolved SensibleDB internal IDs. This eliminates the
 // need for the seed script to capture and map internal IDs.
 // =============================================================================
 
@@ -842,7 +842,7 @@ QUERY SearchChunksBM25(query: String, limit: I64) =>
     RETURN results
 
 // --- Firm-scoped search queries (server-side firmId filtering) ---
-// NexusDB supports ::WHERE postfiltering on SearchV and SearchBM25 results.
+// SensibleDB supports ::WHERE postfiltering on SearchV and SearchBM25 results.
 // This eliminates the need for app-layer firmId filtering.
 
 #[mcp]
@@ -886,7 +886,7 @@ QUERY SearchChunksBM25ByProject(query: String, projectId: String, limit: I64) =>
 // SECTION 4: NODE LOOKUPS
 //
 // All #[mcp] queries accept Postgres UUIDs and look up via N<Type>({externalId}).
-// RETURN ::!{ id, label } strips NexusDB internals so `externalId` is
+// RETURN ::!{ id, label } strips SensibleDB internals so `externalId` is
 // the only identifier in responses.
 // =============================================================================
 // =============================================================================
@@ -933,7 +933,7 @@ QUERY GetFileById(fileId: String) =>
 //
 // Each query maps to one OPTIONAL MATCH branch in the original Cypher templates.
 // Input: Postgres UUID (externalId) → looks up start node → traverses edges.
-// Output: RETURN result::!{ id, label } — strips NexusDB internals.
+// Output: RETURN result::!{ id, label } — strips SensibleDB internals.
 // =============================================================================
 
 // --- Project → Proposal (used by: proposal.*, chat.project, pursuit.*) ---
@@ -3153,7 +3153,7 @@ QUERY UpsertLinkWorkerProjectAssignment(userId: String, projectId: String) =>
     edge <- existing::UpsertE({v: "1", targetExternalId: ""})::From(from)::To(to)
     RETURN edge
 
-// NOTE: Edge deletion IS supported in NexusDB via DROP node::OutE<Type>.
+// NOTE: Edge deletion IS supported in SensibleDB via DROP node::OutE<Type>.
 // Targeted edge deletion queries (DropUserExpertiseEdges, etc.) are defined
 // in Section 11 alongside other bulk-operation DROP queries.
 // =============================================================================
@@ -3233,7 +3233,7 @@ QUERY CountDocumentChunkTextsByFirm(firmId: String) =>
 // =============================================================================
 // SECTION 11: BATCH OPERATIONS
 //
-// NexusDB supports batched queries via FOR loops over array parameters.
+// SensibleDB supports batched queries via FOR loops over array parameters.
 // Use these for bulk ingestion and seed operations to reduce round-trips.
 //
 // Pattern:

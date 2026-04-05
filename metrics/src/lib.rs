@@ -19,12 +19,12 @@ pub static METRICS_CLIENT: LazyLock<reqwest::Client> = LazyLock::new(reqwest::Cl
 
 static CONFIG: LazyLock<String> = LazyLock::new(|| {
     let home_dir = std::env::var("HOME").unwrap_or("~/".to_string());
-    let config_path = &format!("{home_dir}/.nexus/credentials");
+    let config_path = &format!("{home_dir}/.sensibledb/credentials");
     let config_path = Path::new(config_path);
     fs::read_to_string(config_path).unwrap_or_default()
 });
 
-pub static NEXUS_USER_ID: LazyLock<&'static str> = LazyLock::new(|| {
+pub static SENSIBLE_USER_ID: LazyLock<&'static str> = LazyLock::new(|| {
     // read from credentials file
     for line in CONFIG.lines() {
         if let Some((key, value)) = line.split_once("=")
@@ -47,7 +47,7 @@ pub static METRICS_ENABLED: LazyLock<bool> = LazyLock::new(|| {
     true
 });
 
-pub const METRICS_URL: &str = "https://logs.nexus-db.com/v2";
+pub const METRICS_URL: &str = "https://logs.sensibledb-db.com/v2";
 
 // Thread-local buffer for events
 thread_local! {
@@ -73,7 +73,7 @@ static METRICS_STATE: LazyLock<MetricsState> = LazyLock::new(|| {
     let (shutdown_tx, shutdown_rx) = flume::unbounded();
 
     // Read threshold from environment or use default
-    let threshold_batches = std::env::var("NEXUS_METRICS_THRESHOLD_BATCHES")
+    let threshold_batches = std::env::var("SENSIBLE_METRICS_THRESHOLD_BATCHES")
         .ok()
         .and_then(|v| v.parse::<usize>().ok())
         .unwrap_or(num_cpus::get());
@@ -205,7 +205,7 @@ fn create_raw_event(
 ) -> events::RawEvent<events::EventData> {
     events::RawEvent {
         os: OS,
-        user_id: Some(&NEXUS_USER_ID),
+        user_id: Some(&SENSIBLE_USER_ID),
         event_type,
         event_data,
         timestamp: std::time::SystemTime::now()

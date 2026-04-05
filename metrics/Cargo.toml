@@ -1,11 +1,11 @@
 [package]
-name = "nexus-metrics"
+name = "sensibledb-metrics"
 version = "0.1.1"
 edition = "2024"
-authors = ["NexusDB Team"]
-repository = "https://github.com/NexusDB/nexus-db"
+authors = ["SensibleDB Team"]
+repository = "https://github.com/SensibleDB/sensibledb-db"
 license = "AGPL-3.0"
-description = "Metrics for NexusDB"
+description = "Metrics for SensibleDB"
 
 [dependencies]
 reqwest = "0.12.11"

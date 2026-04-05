@@ -1,10 +1,10 @@
-# NexusDB Overview
+# SensibleDB Overview
 
-NexusDB is a high-performance **graph-vector database** built from scratch in Rust.
+SensibleDB is a high-performance **graph-vector database** built from scratch in Rust.
 
-## What is NexusDB?
+## What is SensibleDB?
 
-NexusDB makes it easy to build all components needed for an AI application in a single platform.
+SensibleDB makes it easy to build all components needed for an AI application in a single platform.
 
 ## Key Features
 

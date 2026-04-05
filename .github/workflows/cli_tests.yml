@@ -4,10 +4,10 @@
 #   pull_request:
 #     branches: [main, dev]
 #     paths:
-#       - 'nexus-cli/**'
-#       - 'nexus-macros/**'
-#       - 'nexus-container/**'
-#       - 'nexus-db/**'
+#       - 'sensibledb-cli/**'
+#       - 'sensibledb-macros/**'
+#       - 'sensibledb-container/**'
+#       - 'sensibledb-db/**'
 #       - 'Cargo.toml'
 #       - 'Cargo.lock'
 
@@ -42,17 +42,17 @@
 #           restore-keys: |
 #             ${{ runner.os }}-cargo-
 
-#       - name: Run nexus-cli unit tests
-#         run: cargo test --release --package nexus-cli
+#       - name: Run sensibledb-cli unit tests
+#         run: cargo test --release --package sensibledb-cli
 #         env:
 #           # Use a unique temp directory for test isolation
-#           NEXUS_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-${{ github.run_id }}
+#           SENSIBLE_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-${{ github.run_id }}
 
-#       - name: Run nexus-macros tests
-#         run: cargo test --release --package nexus-macros
+#       - name: Run sensibledb-macros tests
+#         run: cargo test --release --package sensibledb-macros
 
 #       # Integration tests that require repo cloning run serially
-#       - name: Run nexus-cli integration tests (ignored tests)
-#         run: cargo test --release --package nexus-cli -- --ignored --test-threads=1
+#       - name: Run sensibledb-cli integration tests (ignored tests)
+#         run: cargo test --release --package sensibledb-cli -- --ignored --test-threads=1
 #         env:
-#           NEXUS_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-ignored-${{ github.run_id }}
+#           SENSIBLE_CACHE_DIR: ${{ runner.temp }}/nexus-test-cache-ignored-${{ github.run_id }}

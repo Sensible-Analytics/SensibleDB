@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# E2E Test Script for NexusDB Explorer
+# E2E Test Script for SensibleDB Explorer
 # Tests: demo DB creation, node/edge CRUD, query execution
 set -euo pipefail
 
@@ -45,7 +45,7 @@ assert_contains() {
 
 main() {
     echo "========================================"
-    echo "NexusDB Explorer E2E Test Suite"
+    echo "SensibleDB Explorer E2E Test Suite"
     echo "========================================"
     echo ""
 
@@ -53,8 +53,8 @@ main() {
     log_info "=== Test 1: Demo DB Auto-Creation ==="
     if [ -n "${CI:-}" ]; then
         log_pass "Demo DB directory check skipped in CI (app not launched)"
-    elif [ -d "$HOME/.nexus/demo" ]; then
-        log_pass "Demo DB directory exists at ~/.nexus/demo"
+    elif [ -d "$HOME/.sensibledb/demo" ]; then
+        log_pass "Demo DB directory exists at ~/.sensibledb/demo"
     else
         log_fail "Demo DB directory not found"
     fi
@@ -62,14 +62,14 @@ main() {
     # Test 2: Demo data integrity
     log_info "=== Test 2: Demo Data Integrity ==="
     local node_count edge_count
-    node_count=$(grep -c "db.put_node(Node" nexus-explorer/src/commands/database.rs 2>/dev/null || echo "0")
+    node_count=$(grep -c "db.put_node(Node" sensibledb-explorer/src/commands/database.rs 2>/dev/null || echo "0")
     assert_gt "$node_count" "0" "Demo database has nodes"
 
-    edge_count=$(grep -c "db.put_edge(Edge" nexus-explorer/src/commands/database.rs 2>/dev/null || echo "0")
+    edge_count=$(grep -c "db.put_edge(Edge" sensibledb-explorer/src/commands/database.rs 2>/dev/null || echo "0")
     assert_gt "$edge_count" "0" "Demo database has edges"
 
     local labels
-    labels=$(grep "label:" nexus-explorer/src/commands/database.rs)
+    labels=$(grep "label:" sensibledb-explorer/src/commands/database.rs)
     assert_contains "$labels" "Person:Alex" "Demo has Person:Alex"
     assert_contains "$labels" "Place:Office" "Demo has Place:Office"
     assert_contains "$labels" "Event:PoorSleep" "Demo has Event:PoorSleep"
@@ -82,25 +82,25 @@ main() {
 
     # Test 3: Graph rendering
     log_info "=== Test 3: Graph Rendering ==="
-    if [ -f "nexus-explorer/src/frontend/src/components/graph/GraphView.tsx" ]; then
+    if [ -f "sensibledb-explorer/src/frontend/src/components/graph/GraphView.tsx" ]; then
         log_pass "GraphView component exists"
     else
         log_fail "GraphView component not found"
     fi
 
-    if grep -q "createEffect" nexus-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
+    if grep -q "createEffect" sensibledb-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
         log_pass "GraphView uses createEffect for reactive updates"
     else
         log_fail "GraphView missing createEffect"
     fi
 
-    if grep -qE "graphData|graphNodes|graphEdges" nexus-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
+    if grep -qE "graphData|graphNodes|graphEdges" sensibledb-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
         log_pass "GraphView processes graph data"
     else
         log_fail "GraphView missing graphData call"
     fi
 
-    if grep -qE "viewBox|zoomToFit" nexus-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
+    if grep -qE "viewBox|zoomToFit" sensibledb-explorer/src/frontend/src/components/graph/GraphView.tsx 2>/dev/null; then
         log_pass "GraphView has zoom/viewBox for auto-centering"
     else
         log_fail "GraphView missing zoomToFit"
@@ -108,13 +108,13 @@ main() {
 
     # Test 4: Frontend auto-select
     log_info "=== Test 4: Frontend Auto-Select ==="
-    if grep -q "setActiveDb" nexus-explorer/src/frontend/src/App.tsx 2>/dev/null; then
+    if grep -q "setActiveDb" sensibledb-explorer/src/frontend/src/App.tsx 2>/dev/null; then
         log_pass "App.tsx uses setActiveDb for auto-selection"
     else
         log_fail "App.tsx missing setActiveDb"
     fi
 
-    if grep -q "loadDbData" nexus-explorer/src/frontend/src/App.tsx 2>/dev/null; then
+    if grep -q "loadDbData" sensibledb-explorer/src/frontend/src/App.tsx 2>/dev/null; then
         log_pass "App.tsx calls loadDbData on mount"
     else
         log_fail "App.tsx missing loadDbData call"
@@ -123,7 +123,7 @@ main() {
     # Test 5: Rust compilation
     log_info "=== Test 5: Rust Compilation ==="
     local rust_result
-    rust_result=$(cargo check -p nexus-explorer 2>&1) || true
+    rust_result=$(cargo check -p sensibledb-explorer 2>&1) || true
     if echo "$rust_result" | grep -q "Finished"; then
         log_pass "Rust compilation successful"
     else
@@ -134,7 +134,7 @@ main() {
     # Test 6: Database CRUD tests
     log_info "=== Test 6: Database CRUD Tests ==="
     local db_test
-    db_test=$(cargo test -p nexus-db --lib -- embedded::database::tests 2>&1) || true
+    db_test=$(cargo test -p sensibledb-db --lib -- embedded::database::tests 2>&1) || true
     if echo "$db_test" | grep -q "test result: ok"; then
         log_pass "Database CRUD tests pass"
     else

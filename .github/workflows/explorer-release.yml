@@ -1,4 +1,4 @@
-name: Build and Release NexusDB Explorer
+name: Build and Release SensibleDB Explorer
 
 on:
   push:
@@ -31,35 +31,35 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
-          cache-dependency-path: nexus-explorer/src/frontend/pnpm-lock.yaml
+          cache-dependency-path: sensibledb-explorer/src/frontend/pnpm-lock.yaml
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-apple-darwin
       - name: Install frontend dependencies
         run: |
-          cd nexus-explorer/src/frontend
+          cd sensibledb-explorer/src/frontend
           pnpm install
       - name: Install Tauri CLI
         run: cargo install tauri-cli --version "^2"
       - name: Build .app and .dmg
         run: |
-          cd nexus-explorer
+          cd sensibledb-explorer
           cargo tauri build --bundles app,dmg --target aarch64-apple-darwin
       - name: Re-sign app bundle
         run: |
-          APP_DIR="target/aarch64-apple-darwin/release/bundle/macos/NexusDB Explorer.app"
+          APP_DIR="target/aarch64-apple-darwin/release/bundle/macos/SensibleDB Explorer.app"
           codesign --force --deep --sign - --preserve-metadata=entitlements,identifier,flags "$APP_DIR"
       - name: Zip .app bundle
         run: |
-          APP_DIR="target/aarch64-apple-darwin/release/bundle/macos/NexusDB Explorer.app"
-          zip -r -y "target/aarch64-apple-darwin/release/bundle/macos/NexusDB-Explorer-aarch64.app.zip" "$APP_DIR"
+          APP_DIR="target/aarch64-apple-darwin/release/bundle/macos/SensibleDB Explorer.app"
+          zip -r -y "target/aarch64-apple-darwin/release/bundle/macos/SensibleDB-Explorer-aarch64.app.zip" "$APP_DIR"
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            target/aarch64-apple-darwin/release/bundle/macos/NexusDB-Explorer-aarch64.app.zip
-            target/aarch64-apple-darwin/release/bundle/dmg/NexusDB Explorer_*.dmg
+            target/aarch64-apple-darwin/release/bundle/macos/SensibleDB-Explorer-aarch64.app.zip
+            target/aarch64-apple-darwin/release/bundle/dmg/SensibleDB Explorer_*.dmg
           draft: false
           prerelease: false
           generate_release_notes: true

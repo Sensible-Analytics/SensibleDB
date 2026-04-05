@@ -1,10 +1,10 @@
 # Distinctive Features
 
-This document enumerates and describes the features of NexusDB that make it different from other database systems, particularly those commonly used in AI applications.
+This document enumerates and describes the features of SensibleDB that make it different from other database systems, particularly those commonly used in AI applications.
 
 ## Built-in MCP Tools
 
-**Model Context Protocol (MCP) Support**: NexusDB includes native support for the Model Context Protocol, enabling AI agents to discover and interact with data through standardized interfaces rather than generating human-readable queries.
+**Model Context Protocol (MCP) Support**: SensibleDB includes native support for the Model Context Protocol, enabling AI agents to discover and interact with data through standardized interfaces rather than generating human-readable queries.
 
 Benefits:
 - Agents can dynamically explore database schema and content
@@ -14,7 +14,7 @@ Benefits:
 
 ## Built-in Embeddings
 
-**Automatic Vectorization**: No need to pre-process or embed your data before sending it to NexusDB. Simply use the `Embed` function to convert text to vector representations.
+**Automatic Vectorization**: No need to pre-process or embed your data before sending it to SensibleDB. Simply use the `Embed` function to convert text to vector representations.
 
 Benefits:
 - Eliminates external embedding service dependencies
@@ -24,7 +24,7 @@ Benefits:
 
 ## Tooling for RAG
 
-**Complete RAG Stack**: NexusDB provides all the components needed for Retrieval-Augmented Generation applications in a single platform.
+**Complete RAG Stack**: SensibleDB provides all the components needed for Retrieval-Augmented Generation applications in a single platform.
 
 Components:
 - **Vector Search**: Cosine similarity and other metrics for finding semantically similar content
@@ -40,7 +40,7 @@ Benefits:
 
 ## Secure by Default
 
-**Query-Based Access Control**: NexusDB is private by default - you can only access your data through compiled NexusQL queries.
+**Query-Based Access Control**: SensibleDB is private by default - you can only access your data through compiled NexusQL queries.
 
 Security Model:
 - No direct table or collection access
@@ -57,7 +57,7 @@ Benefits:
 
 ## Ultra-Low Latency
 
-**High-Performance Storage Engine**: NexusDB is built in Rust and uses LMDB as its primary storage engine to provide extremely low latencies.
+**High-Performance Storage Engine**: SensibleDB is built in Rust and uses LMDB as its primary storage engine to provide extremely low latencies.
 
 Performance Characteristics:
 - Sub-millisecond read latencies for cached data
@@ -91,7 +91,7 @@ Benefits:
 
 ## Embedded Mode
 
-**Zero-External-Dependency Usage**: Use NexusDB as a lightweight embedded database in your Rust applications with no external services required.
+**Zero-External-Dependency Usage**: Use SensibleDB as a lightweight embedded database in your Rust applications with no external services required.
 
 Embedded Capabilities:
 - In-memory storage for volatile or caching use cases
@@ -110,7 +110,7 @@ Benefits:
 
 ## Graph-Vector Data Model
 
-**Unified Data Representation**: NexusDB natively supports both graph relationships and vector embeddings in a single storage engine.
+**Unified Data Representation**: SensibleDB natively supports both graph relationships and vector embeddings in a single storage engine.
 
 Model Components:
 - **Nodes (Vertices)**: Entities with labels and properties

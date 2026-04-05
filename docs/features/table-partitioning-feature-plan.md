@@ -197,7 +197,7 @@ CREATE TABLE measurements (
 - Verify all SQL syntax examples work
 - Check that code samples are complete and runnable
 - Validate cross-references to related documentation
-- Ensure tone and style match existing NexusDB documentation
+- Ensure tone and style match existing SensibleDB documentation
 
 ## Risks and Mitigations
 

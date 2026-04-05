@@ -1,9 +1,9 @@
-# Nexus CLI Guide
+# SensibleDB CLI Guide
 
 ## Installation
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
+curl -sSL "https://install.sensibledb-db.com" | bash
 nexus --version
 ```
 
@@ -25,10 +25,10 @@ nexus --version
 
 ```
 my-project/
-+-- nexus.toml      # Project configuration
++-- sensibledb.toml      # Project configuration
 +-- db/
 |   +-- schema.hx   # Schema definitions
 |   +-- queries.hx  # Query definitions
-+-- .nexus/         # Build artifacts
++-- .sensibledb/         # Build artifacts
 ```
 

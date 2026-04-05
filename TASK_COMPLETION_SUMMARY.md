@@ -30,7 +30,7 @@ The user asked to:
     - Consistent markdown formatting with code blocks
     - Practical examples for range, list, hash, and composite partitioning
     - Performance considerations and best practices
-    - Cross-references to related NexusDB features
+    - Cross-references to related SensibleDB features
     - "See also" sections for related topics
     - Clear syntax examples following SQL standards
 
@@ -51,10 +51,10 @@ The user asked to:
 - **Initialized Git Repository**: The workspace was a bare git repository with only `.git` directory
 - **Created Documentation Files**: Added the two markdown files to the docs/features directory
 - **Committed Changes**: Created initial commit with the table partitioning documentation
-- **Configured Remote**: Set up origin to point to https://github.com/Sensible-Analytics/NexusDB.git
+- **Configured Remote**: Set up origin to point to https://github.com/Sensible-Analytics/SensibleDB.git
 - **Created Feature Branch**: `feature/table-partitioning-docs` to isolate changes
 - **Pushed to GitHub**: Successfully pushed the feature branch to the remote repository
-- **Branch URL**: https://github.com/Sensible-Analytics/NexusDB/tree/feature/table-partitioning-docs
+- **Branch URL**: https://github.com/Sensible-Analytics/SensibleDB/tree/feature/table-partitioning-docs
 
 ## Key Deliverables
 
@@ -82,7 +82,7 @@ The user asked to:
 - ✅ Sections are well-organized with clear headings
 - ✅ File pushed to remote repository as requested
 - ✅ No existing code modified (additive documentation only)
-- ✅ Cross-references to related NexusDB features included
+- ✅ Cross-references to related SensibleDB features included
 
 ## Next Steps for User
 1. Review the created documentation in the feature branch
@@ -97,7 +97,7 @@ docs/features/table-partitioning-feature-plan.md    # Implementation plan
 ```
 
 ## Repository Status
-- **Remote**: https://github.com/Sensible-Analytics/NexusDB.git
+- **Remote**: https://github.com/Sensible-Analytics/SensibleDB.git
 - **Branch**: feature/table-partitioning-docs
 - **Commit**: 814d96ad "Add table partitioning documentation in SQLite style"
 - **Ready for**: Pull request creation and review

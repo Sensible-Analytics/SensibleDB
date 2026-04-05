@@ -1,4 +1,4 @@
-# NexusDB Documentation
+# SensibleDB Documentation
 
 ## Table of Contents
 
@@ -21,9 +21,9 @@
 
 ### Overview
 
-NexusDB is a high-performance **graph-vector database** built from scratch in Rust, with its own query language designed for traversing and manipulating graph and vector data efficiently.
+SensibleDB is a high-performance **graph-vector database** built from scratch in Rust, with its own query language designed for traversing and manipulating graph and vector data efficiently.
 
-NexusDB makes it easy to build all components needed for an AI application in a single platform. You no longer need a separate application DB, vector DB, graph DB, or application layers. Just use NexusDB.
+SensibleDB makes it easy to build all components needed for an AI application in a single platform. You no longer need a separate application DB, vector DB, graph DB, or application layers. Just use SensibleDB.
 
 #### Key Features
 
@@ -65,7 +65,7 @@ pacman -S lmdb             # Arch Linux
 #### Step 1: Install NexusCLI
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
+curl -sSL "https://install.sensibledb-db.com" | bash
 nexus --version
 ```
 
@@ -79,11 +79,11 @@ nexus init
 Creates:
 ```
 my-project/
-├── nexus.toml      # Project configuration
+├── sensibledb.toml      # Project configuration
 ├── db/
 │   ├── schema.hx   # Schema definitions
 │   └── queries.hx  # Query definitions
-└── .nexus/         # Build artifacts
+└── .sensibledb/         # Build artifacts
 ```
 
 #### Step 3: Write Schema and Queries
@@ -145,7 +145,7 @@ curl -X POST http://localhost:6969/getUser \
 
 ### Overview
 
-NexusQL is a **strongly typed, compiled query language** for NexusDB that combines the best features of Gremlin, Cypher, and Rust.
+NexusQL is a **strongly typed, compiled query language** for SensibleDB that combines the best features of Gremlin, Cypher, and Rust.
 
 #### Why NexusQL?
 
@@ -367,7 +367,7 @@ QUERY diverseResults(query: String) =>
 | `nexus prune` | Clean up unused resources |
 | `nexus update` | Update CLI to latest version |
 
-### Configuration (nexus.toml)
+### Configuration (sensibledb.toml)
 
 ```toml
 [project]
@@ -394,8 +394,8 @@ npm install nexus-ts
 ```
 
 ```typescript
-import NexusDB from "nexus-ts";
-const client = new NexusDB();
+import SensibleDB from "nexus-ts";
+const client = new SensibleDB();
 const user = await client.query("getUser", { name: "John" });
 ```
 
@@ -415,11 +415,11 @@ user = client.query("getUser", {"name": "John"})
 
 ```toml
 [dependencies]
-nexus-db = { version = "1.3", features = ["embedded"] }
+sensibledb-db = { version = "1.3", features = ["embedded"] }
 ```
 
 ```rust
-use nexus_db::embedded::{Database, Node};
+use sensibledb_db::embedded::{Database, Node};
 let db = Database::open("./my_db")?;
 ```
 

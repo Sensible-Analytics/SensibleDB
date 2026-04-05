@@ -11,7 +11,7 @@
 ### 1. Install NexusCLI
 
 ```bash
-curl -sSL "https://install.nexus-db.com" | bash
+curl -sSL "https://install.sensibledb-db.com" | bash
 nexus --version
 ```
 

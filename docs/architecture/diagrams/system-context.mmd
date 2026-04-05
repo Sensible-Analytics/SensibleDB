@@ -1,5 +1,5 @@
 ---
-title: NexusDB - System Context Diagram (C4 Level 1)
+title: SensibleDB - System Context Diagram (C4 Level 1)
 ---
 
 graph TB
@@ -9,11 +9,11 @@ graph TB
         MCPClient["🔧 MCP Client<br/>AI Agent Tool Discovery"]
     end
 
-    subgraph NexusDB["NexusDB - Embedded Graph-Vector Database"]
-        CLI["Nexus CLI<br/>nexus-cli"]
-        Server["Nexus Server<br/>nexus-container"]
-        Engine["Core Engine<br/>nexus-db"]
-        Explorer["Nexus Explorer<br/>nexus-explorer"]
+    subgraph SensibleDB["SensibleDB - Embedded Graph-Vector Database"]
+        CLI["SensibleDB CLI<br/>sensibledb-cli"]
+        Server["Nexus Server<br/>sensibledb-container"]
+        Engine["Core Engine<br/>sensibledb-db"]
+        Explorer["Nexus Explorer<br/>sensibledb-explorer"]
     end
 
     subgraph Storage["Storage Layer"]
