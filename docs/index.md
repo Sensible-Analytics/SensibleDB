@@ -1,1 +1,136 @@
-IyBTZW5zaWJsZURCCgoqKkVtYmVkZGVkIEdyYXBoLVZlY3RvciBEYXRhYmFzZSBmb3IgQUkgQXBwbGljYXRpb25zKioKClNlbnNpYmxlREIgaXMgYSB1bmlmaWVkIGRhdGFiYXNlIHRoYXQgbWFrZXMgaXQgZWFzeSB0byBidWlsZCBhbGwgdGhlIGNvbXBvbmVudHMgbmVlZGVkIGZvciBhbiBBSSBhcHBsaWNhdGlvbiBpbiBhIHNpbmdsZSBwbGF0Zm9ybS4gWW91IG5vIGxvbmdlciBuZWVkIGEgc2VwYXJhdGUgYXBwbGljYXRpb24gREIsIHZlY3RvciBEQiwgZ3JhcGggREIsIG9yIGFwcGxpY2F0aW9uIGxheWVycyBtYW5hZ2luZyBtdWx0aXBsZSBzdG9yYWdlIGxvY2F0aW9ucy4KCkJ1aWx0IGluIFJ1c3Qgd2l0aCBMTURCIGFzIGl0cyBzdG9yYWdlIGVuZ2luZSDigJQgbGlrZSBTUUxpdGUgZm9yIGtub3dsZWRnZSBncmFwaHMuCgotLS0KCiMjIFdoeSBTZW5zaWJsZURCPwoKfCBCZWZvcmUgU2Vuc2libGVEQiB8IFdpdGggU2Vuc2libGVEQiB8CnwtLS18LS0tfAp8IFBvc3RncmVTUUwgZm9yIGFwcCBkYXRhIHwgKipPbmUgZGF0YWJhc2UqKiBoYW5kbGVzIGV2ZXJ5dGhpbmcgfAp8IFBpbmVjb25lIC8gV2VhdmlhdGUgZm9yIHZlY3RvcnMgfCBHcmFwaCArIHZlY3RvciArIGVtYmVkZGVkIGluIGEgc2luZ2xlIGVuZ2luZSB8CnwgTmVvNGogZm9yIGdyYXBoIHJlbGF0aW9uc2hpcHMgfCBUeXBlLXNhZmUgcXVlcmllcyB3aXRoIGNvbXBpbGUtdGltZSB2YWxpZGF0aW9uIHwKfCBDdXN0b20gYXV0aCAmIGFjY2VzcyBsYXllcnMgfCBTZWN1cmUgYnkgZGVmYXVsdCDigJQgYWNjZXNzIG9ubHkgdGhyb3VnaCBjb21waWxlZCBTZW5zaWJsZVFMIHwKCiMjIEtleSBGZWF0dXJlcwoKLSAqKkJ1aWx0LWluIE1DUCBUb29scyoqIOKAlCBBSSBhZ2VudHMgZGlzY292ZXIgZGF0YSBhbmQgd2FsayB0aGUgZ3JhcGggaW5zdGVhZCBvZiBnZW5lcmF0aW5nIFNRTAotICoqQnVpbHQtaW4gRW1iZWRkaW5ncyoqIOKAlCBWZWN0b3JpemUgdGV4dCBkaXJlY3RseSBpbiBxdWVyaWVzIHdpdGggYEVtYmVkKClgCi0gKipSQUcgVG9vbGluZyoqIOKAlCBWZWN0b3Igc2VhcmNoLCBrZXl3b3JkIHNlYXJjaCwgYW5kIGdyYXBoIHRyYXZlcnNhbHMgb3V0IG9mIHRoZSBib3gKLSAqKlNlY3VyZSBieSBEZWZhdWx0Kiog4oCUIFByaXZhdGUgYnkgZGVmYXVsdDsgYWNjZXNzIG9ubHkgdGhyb3VnaCBjb21waWxlZCBTZW5zaWJsZVFMIHF1ZXJpZXMKLSAqKlVsdHJhLUxvdyBMYXRlbmN5Kiog4oCUIFJ1c3QgKyBMTURCIHN0b3JhZ2UgZW5naW5lIGZvciBleHRyZW1lIHBlcmZvcm1hbmNlCi0gKipUeXBlLVNhZmUgUXVlcmllcyoqIOKAlCBTZW5zaWJsZVFMIGlzIDEwMCUgdHlwZS1zYWZlLCBjYXRjaCBlcnJvcnMgYXQgY29tcGlsZSB0aW1lCi0gKipFbWJlZGRlZCBNb2RlKiog4oCUIFplcm8gZXh0ZXJuYWwgZGVwZW5kZW5jaWVzLCB1c2UgZGlyZWN0bHkgaW4gUnVzdCBhcHBsaWNhdGlvbnMKLSAqKlZpc3VhbCBFeHBsb3JlcioqIOKAlCBJbnRlcmFjdGl2ZSBncmFwaCB2aXN1YWxpemF0aW9uLCBuYXR1cmFsIGxhbmd1YWdlIGNoYXQsIGFuZCByZXBvcnQgZ2VuZXJhdGlvbgoKLS0tCgojIyBRdWljayBTdGFydAoKIyMjIDEuIEluc3RhbGwgdGhlIENMSQoKYGBgYmFzaApjdXJsIC1zU0wgImh0dHBzOi8vaW5zdGFsbC5zZW5zaWJsZWRiLWRiLmNvbSIgfCBiYXNoCmBgYAoKIyMjIDIuIEluaXRpYWxpemUgYSBQcm9qZWN0CgpgYGBiYXNoCm1rZGlyIG15LXByb2plY3QgJiYgY2QgbXktcHJvamVjdApzZW5zaWJsZWRiIGluaXQKYGBgCgojIyMgMy4gV3JpdGUgWW91ciBTY2hlbWEgJiBRdWVyaWVzCgpPcGVuIHRoZSBnZW5lcmF0ZWQgYC5oeGAgZmlsZSBhbmQgZGVmaW5lIHlvdXIgc2NoZW1hOgoKYGBgc2Vuc2libGVxbApOOjpVc2VyIHsKICAgIElOREVYIG5hbWU6IFN0cmluZywKICAgIGFnZTogVTMyCn0KCkU6OkZSSUVORFMgewogICAgZnJvbTogVXNlciwKICAgIHRvOiBVc2VyCn0KClFVRVJZIGdldFVzZXIodXNlcl9uYW1lOiBTdHJpbmcpID0+CiAgICB1c2VyIDwtIE48VXNlcj4oe25hbWU6IHVzZXJfbmFtZX0pCiAgICBSRVRVUk4gdXNlcgoKUVVFUlkgZ2V0RnJpZW5kcyh1c2VyX2lkOiBVNjQpID0+CiAgICB1c2VyIDwtIE48VXNlcj4oe2lkOiB1c2VyX2lkfSkKICAgIGZyaWVuZHMgPC0gVFJBVkVSU0UgdXNlciAtW0ZSSUVORFNdLT4gZnJpZW5kCiAgICBSRVRVUk4gZnJpZW5kCmBgYAoKIyMjIDQuIERlcGxveQoKYGBgYmFzaApzZW5zaWJsZWRiIHB1c2ggZGV2CmBgYAoKIyMjIDUuIFVzZSBpbiBZb3VyIEFwcGxpY2F0aW9uCgoqKlR5cGVTY3JpcHQ6KioKCmBgYHR5cGVzY3JpcHQKaW1wb3J0IFNlbnNpYmxlREIgZnJvbSAic2Vuc2libGUtdHMiOwoKY29uc3QgY2xpZW50ID0gbmV3IFNlbnNpYmxlREIoKTsKCi8vIENyZWF0ZSBhIHVzZXIKYXdhaXQgY2xpZW50LnF1ZXJ5KCJhZGRVc2VyIiwgeyBuYW1lOiAiSm9obiIsIGFnZTogMzAgfSk7CgovLyBRdWVyeSB3aXRoIHR5cGUgc2FmZXR5CmNvbnN0IHVzZXIgPSBhd2FpdCBjbGllbnQucXVlcnkoImdldFVzZXIiLCB7IHVzZXJfbmFtZTogIkpvaG4iIH0pOwpgYGAKCioqUHl0aG9uOioqCgpgYGBweXRob24KZnJvbSBzZW5zaWJsZWRiIGltcG9ydCBTZW5zaWJsZURCCgpjbGllbnQgPSBTZW5zaWJsZURCKCkKCiMgUXVlcnkgdGhlIGRhdGFiYXNlCnVzZXIgPSBjbGllbnQucXVlcnkoImdldFVzZXIiLCB1c2VyX25hbWU9IkpvaG4iKQpwcmludCh1c2VyKQpgYGAKCioqUnVzdCAoRW1iZWRkZWQpOioqCgpgYGBydXN0CnVzZSBzZW5zaWJsZWRiX2RiOjplbWJlZGRlZDo6e0RhdGFiYXNlLCBOb2RlfTsKCmxldCBkYiA9IERhdGFiYXNlOjpvcGVuKCIuL215X2RiIik/OwpsZXQgbXV0IHR4ID0gZGIud3JpdGVfdHJhbnNhY3Rpb24oKT87Cgp0eC5wdXRfbm9kZShOb2RlIHsKICAgIGlkOiAxLAogICAgbGFiZWw6ICJVc2VyIi5pbnRvKCksCn0pPzsKCnR4LmNvbW1pdCgpPzsKYGBgCgotLS0KCiMjIERvY3VtZW50YXRpb24KCnwgU2VjdGlvbiB8IERlc2NyaXB0aW9uIHwKfC0tLXwtLS18CnwgW0dldHRpbmcgU3RhcnRlZF0oZ2V0dGluZy1zdGFydGVkL2ludHJvLm1kKSB8IEluc3RhbGxhdGlvbiBhbmQgc2V0dXAgfAp8IFtTZW5zaWJsZVFMXShzZW5zaWJsZXFsL292ZXJ2aWV3Lm1kKSB8IFF1ZXJ5IGxhbmd1YWdlIHJlZmVyZW5jZSB8CnwgW0NMSV0oY2xpL2dldHRpbmctc3RhcnRlZC5tZCkgfCBDb21tYW5kLWxpbmUgdG9vbCBndWlkZSB8CnwgW1NES3NdKHNka3Mvb3ZlcnZpZXcubWQpIHwgVHlwZVNjcmlwdCwgUHl0aG9uLCBhbmQgUnVzdCBTREtzIHwKfCBbRmVhdHVyZXNdKGZlYXR1cmVzL292ZXJ2aWV3Lm1kKSB8IEZ1bGwgZmVhdHVyZSBvdmVydmlldyB8CgotLS0KCiMjIExpY2Vuc2UKClNlbnNpYmxlREIgaXMgbGljZW5zZWQgdW5kZXIgdGhlIEFHUEwgKEFmZmVybyBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlKS4KCiMjIENvbW1lcmNpYWwgU3VwcG9ydAoKU2Vuc2libGVEQiBpcyBhdmFpbGFibGUgYXMgYSBtYW5hZ2VkIHNlcnZpY2UgZm9yIHNlbGVjdGVkIHVzZXJzLiBGb3IgZW50ZXJwcmlzZSBzdXBwb3J0IG9yIG1hbmFnZWQgZGVwbG95bWVudCwgW2NvbnRhY3QgdXNdKG1haWx0bzpmb3VuZGVyc0BzZW5zaWJsZWRiLWRiLmNvbSkuCg==
+# SensibleDB
+
+**Embedded Graph-Vector Database for AI Applications**
+
+SensibleDB is a unified database that makes it easy to build all the components needed for an AI application in a single platform. You no longer need a separate application DB, vector DB, graph DB, or application layers managing multiple storage locations.
+
+Built in Rust with LMDB as its storage engine — like SQLite for knowledge graphs.
+
+---
+
+## Why SensibleDB?
+
+| Before SensibleDB | With SensibleDB |
+|---|---|
+| PostgreSQL for app data | **One database** handles everything |
+| Pinecone / Weaviate for vectors | Graph + vector + embedded in a single engine |
+| Neo4j for graph relationships | Type-safe queries with compile-time validation |
+| Custom auth & access layers | Secure by default — access only through compiled SensibleQL |
+
+## Key Features
+
+- **Built-in MCP Tools** — AI agents discover data and walk the graph instead of generating SQL
+- **Built-in Embeddings** — Vectorize text directly in queries with `Embed()`
+- **RAG Tooling** — Vector search, keyword search, and graph traversals out of the box
+- **Secure by Default** — Private by default; access only through compiled SensibleQL queries
+- **Ultra-Low Latency** — Rust + LMDB storage engine for extreme performance
+- **Type-Safe Queries** — SensibleQL is 100% type-safe, catch errors at compile time
+- **Embedded Mode** — Zero external dependencies, use directly in Rust applications
+- **Visual Explorer** — Interactive graph visualization, natural language chat, and report generation
+
+---
+
+## Quick Start
+
+### 1. Install the CLI
+
+```bash
+curl -sSL "https://install.sensibledb-db.com" | bash
+```
+
+### 2. Initialize a Project
+
+```bash
+mkdir my-project && cd my-project
+sensibledb init
+```
+
+### 3. Write Your Schema & Queries
+
+Open the generated `.hx` file and define your schema:
+
+```sensibleql
+N::User {
+    INDEX name: String,
+    age: U32
+}
+
+E::FRIENDS {
+    from: User,
+    to: User
+}
+
+QUERY getUser(user_name: String) =>
+    user <- N<User>({name: user_name})
+    RETURN user
+
+QUERY getFriends(user_id: U64) =>
+    user <- N<User>({id: user_id})
+    friends <- TRAVERSE user -[FRIENDS]-> friend
+    RETURN friend
+```
+
+### 4. Deploy
+
+```bash
+sensibledb push dev
+```
+
+### 5. Use in Your Application
+
+**TypeScript:**
+
+```typescript
+import SensibleDB from "sensible-ts";
+
+const client = new SensibleDB();
+
+// Create a user
+await client.query("addUser", { name: "John", age: 30 });
+
+// Query with type safety
+const user = await client.query("getUser", { user_name: "John" });
+```
+
+**Python:**
+
+```python
+from sensibledb import SensibleDB
+
+client = SensibleDB()
+
+# Query the database
+user = client.query("getUser", user_name="John")
+print(user)
+```
+
+**Rust (Embedded):**
+
+```rust
+use sensibledb_db::embedded::{Database, Node};
+
+let db = Database::open("./my_db")?;
+let mut tx = db.write_transaction()?;
+
+tx.put_node(Node {
+    id: 1,
+    label: "User".into(),
+})?;
+
+tx.commit()?;
+```
+
+---
+
+## Documentation
+
+| Section | Description |
+|---|---|
+| [Getting Started](getting-started/intro.md) | Installation and setup |
+| [SensibleQL](sensibleql/overview.md) | Query language reference |
+| [CLI](cli/getting-started.md) | Command-line tool guide |
+| [SDKs](sdks/overview.md) | TypeScript, Python, and Rust SDKs |
+| [Features](features/overview.md) | Full feature overview |
+
+---
+
