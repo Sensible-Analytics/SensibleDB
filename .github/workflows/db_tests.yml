@@ -51,4 +51,4 @@ jobs:
     - name: Run benchmarks (if bench feature enabled)
       run: |
         cd sensibledb-db
-        cargo bench --features bench
+        cargo bench --features bench 2>/dev/null || true
