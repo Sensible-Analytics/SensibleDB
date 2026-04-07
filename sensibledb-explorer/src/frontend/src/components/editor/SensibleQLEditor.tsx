@@ -1,8 +1,7 @@
-import { Component, createSignal, onMount, Show, For } from "solid-js";
-import { EditorView, basicSetup } from "codemirror";
-import { EditorState } from "@codemirror/state";
+import { Component, Show, For, createSignal } from "solid-js";
 import { sensibleqlExecute } from "../../lib/api";
 import { activeDb } from "../../stores/app";
+import { useCodeMirror } from "../../lib/useCodeMirror";
 import type { SensibleqlResult } from "../../types";
 import "./SensibleQLEditor.css";
 
@@ -27,40 +26,21 @@ const sampleQueries: SampleQuery[] = [
 ];
 
 const SensibleQLEditor: Component = () => {
-  let editorRef: HTMLDivElement | undefined;
   const [query, setQuery] = createSignal("");
   const [result, setResult] = createSignal<SensibleqlResult | null>(null);
   const [isRunning, setIsRunning] = createSignal(false);
-  let editor: EditorView | undefined;
 
-  onMount(() => {
-    if (!editorRef) return;
-    editor = new EditorView({
-      state: EditorState.create({
-        doc: "// Select a sample query below or write your own\n// Supported: MATCH, GET, FIND, COUNT\n",
-        extensions: [
-          basicSetup,
-          EditorView.theme({
-            "&": { fontSize: "14px" },
-            ".cm-editor": { background: "#f8fafc" },
-            ".cm-gutters": { background: "#f1f5f9", border: "none" },
-          }),
-          EditorView.updateListener.of((update) => {
-            if (update.docChanged) {
-              setQuery(update.state.doc.toString());
-            }
-          }),
-        ],
-      }),
-      parent: editorRef,
-    });
+  const { ref: editorRef, setDoc: setEditorDoc, getDoc } = useCodeMirror({
+    initialDoc: "// Select a sample query below or write your own\n// Supported: MATCH, GET, FIND, COUNT\n",
+    onChange: (doc) => setQuery(doc),
   });
 
   const handleRun = async () => {
-    if (!activeDb() || !query()) return;
+    const currentQuery = getDoc();
+    if (!activeDb() || !currentQuery) return;
     setIsRunning(true);
     try {
-      const res = await sensibleqlExecute(activeDb()!, query());
+      const res = await sensibleqlExecute(activeDb()!, currentQuery);
       setResult(res);
     } catch (e: any) {
       setResult({ success: false, message: String(e), data: null });
@@ -70,11 +50,7 @@ const SensibleQLEditor: Component = () => {
   };
 
   const loadSample = (sample: SampleQuery) => {
-    if (editor) {
-      editor.dispatch({
-        changes: { from: 0, to: editor.state.doc.length, insert: sample.query },
-      });
-    }
+    setEditorDoc(sample.query);
     setQuery(sample.query);
     setResult(null);
   };
@@ -105,7 +81,7 @@ const SensibleQLEditor: Component = () => {
         </div>
       </div>
 
-      <div ref={editorRef!} class="editor-container" />
+      <div ref={editorRef} class="editor-container" />
       <Show when={result()}>
         {(r) => (
           <div classList={{ "result-panel": true, error: !r().success }}>
